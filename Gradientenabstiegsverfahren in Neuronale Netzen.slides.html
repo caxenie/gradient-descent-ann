@@ -13205,43 +13205,151 @@ a.anchor-link {
 <h1 id="Einsatz-von-Gradientenabstiegsverfahren-in-Neuronale-Netzen">Einsatz von Gradientenabstiegsverfahren in Neuronale Netzen<a class="anchor-link" href="#Einsatz-von-Gradientenabstiegsverfahren-in-Neuronale-Netzen">&#182;</a></h1>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#220;berwachtes-Lernen">&#220;berwachtes Lernen<a class="anchor-link" href="#&#220;berwachtes-Lernen">&#182;</a></h1>
+<h1 id="Optimierungsmethoden">Optimierungsmethoden<a class="anchor-link" href="#Optimierungsmethoden">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Neuronale-Netzwerkarchitektur">Neuronale Netzwerkarchitektur<a class="anchor-link" href="#Neuronale-Netzwerkarchitektur">&#182;</a></h2><div>
+<h1 id="Optimierungsmethoden">Optimierungsmethoden<a class="anchor-link" href="#Optimierungsmethoden">&#182;</a></h1><p>Optimierungsalgorithmen sind in der Regel iterative Verfahren. Ausgehend von einem gegebenen Punkt $ x^0 $ erzeugen sie eine Folge $ {x^k} $ von Iteraten (oder Versuchslösungen), die zu einer "Lösung" konvergieren.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Optimierungsmethoden">Optimierungsmethoden<a class="anchor-link" href="#Optimierungsmethoden">&#182;</a></h1><table>
+<thead><tr>
+<th style="text-align:center">Algorithmen nullter Ordnung</th>
+<th style="text-align:center">Algorithmen erster Ordnung</th>
+<th style="text-align:center">Algorithmen zweiter Ordnung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Gradient und die hessische Information schwer zu erhalten sind</td>
+<td style="text-align:center">geeignet für Datenoptimierung in großem Maßstab mit geringen Genauigkeitsanforderungen</td>
+<td style="text-align:center">Optimierungsprobleme mit hohem Genauigkeitsbedarf [3]</td>
+</tr>
+<tr>
+<td style="text-align:center">keine expliziten Funktionsformen angegeben sind, Funktionen nicht differenzierbar sind [2]</td>
+<td style="text-align:center">Einfach zu berechnen und weniger zeitaufwendig</td>
+<td style="text-align:center">immer langsamer und kostenintensiver in Bezug auf Zeit und Speicher  [3]</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">Konvergiert bei großen Datenmengen ziemlich schnell</td>
+<td style="text-align:center">schneller, wenn die Ableitung zweiter Ordnung ansonsten bekannt ist</td>
+</tr>
+<tr>
+<td style="text-align:center">Metaheuristiken verwenden nur Funktionswerte, um nach der Lösung zu suchen: Funktionsableitungen sind nicht erforderlich</td>
+<td style="text-align:center">Minimieren oder Maximieren einer Verlustfunktion unter Verwendung ihrer Gradientenwerte in Bezug auf die Parameter</td>
+<td style="text-align:center">Minimieren oder Maximieren einer Verlustfunktion unter Verwendung ihrer Gradientenwerte in Bezug auf die Parameter</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">Ableitung erster Ordnung sagt uns, ob die Funktion an einem bestimmten Punkt abnimmt oder zunimmt</td>
+<td style="text-align:center">Die Ableitung zweiter Ordnung gibt an, ob die erste Ableitung zunimmt oder abnimmt, was auf die Krümmung der Funktion hindeutet</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">Ableitung erster Ordnung gibt uns im Grunde eine Linie, die tangential zu einem Punkt auf ihrer Fehlerfläche ist</td>
+<td style="text-align:center">Die Ableitung zweiter Ordnung liefert eine quadratische Fläche, die die Krümmung der Fehlerfläche berührt [4]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Grundlegende-Optimierung-mit-Gradientenabstieg">Grundlegende Optimierung mit Gradientenabstieg<a class="anchor-link" href="#Grundlegende-Optimierung-mit-Gradientenabstieg">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Grundlegende-Optimierung-mit-Gradientenabstieg">Grundlegende Optimierung mit Gradientenabstieg<a class="anchor-link" href="#Grundlegende-Optimierung-mit-Gradientenabstieg">&#182;</a></h1><p>Sei $f$ eine differenzierbare Funktion und nehmen wir an, dass wir den Gradienten-Vektor $\nabla f$ berechnen können. Wir wollen Lösen Sie das uneingeschränkte Minimierungsproblem</p>
+$$ \min \limits_{x \in R}f(x)$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Grundlegende-Optimierung-mit-Gradientenabstieg">Grundlegende Optimierung mit Gradientenabstieg<a class="anchor-link" href="#Grundlegende-Optimierung-mit-Gradientenabstieg">&#182;</a></h1><p>Sei $f$ eine differenzierbare Funktion und nehmen wir an, dass wir den Gradienten-Vektor $\nabla f$ berechnen können. Wir wollen Lösen Sie das uneingeschränkte Minimierungsproblem</p>
+$$ \min \limits_{x \in R}f(x)$$<p>In Ermangelung weiterer Informationen suchen wir einen stationären Punkt von $ f $, dh einen Punkt $ x^*$, an dem $\nabla f(x^*) = 0$. Hier wählen wir den Richtungsvektor $ d^k = - \nabla f (x^k) $ als Suchrichtung bei $ x^k $, der Richtung der steilsten Abfahrt.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Grundlegende-Optimierung-mit-Gradientenabstieg">Grundlegende Optimierung mit Gradientenabstieg<a class="anchor-link" href="#Grundlegende-Optimierung-mit-Gradientenabstieg">&#182;</a></h1><p>Sei $f$ eine differenzierbare Funktion und nehmen wir an, dass wir den Gradienten-Vektor $\nabla f$ berechnen können. Wir wollen Lösen Sie das uneingeschränkte Minimierungsproblem</p>
+$$ \min \limits_{x \in R}f(x)$$<p>In Ermangelung weiterer Informationen suchen wir einen stationären Punkt von $ f $, dh einen Punkt $ x^*$, an dem $\nabla f(x^*) = 0$. Hier wählen wir den Richtungsvektor $ d^k = - \nabla f (x^k) $ als Suchrichtung bei $ x^k $, der Richtung der steilsten Abfahrt.</p>
+<p>Die als Schrittweite bezeichnete Zahl $\alpha^k ≥ 0 $ wird als "passend" gewählt</p>
+$$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iteration definiert als $$x^{k+1} = x^k − \alpha^k \nabla f(x^k)$$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lernen-als-Optimierung">Lernen als Optimierung<a class="anchor-link" href="#Lernen-als-Optimierung">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lernen-als-Optimierung">Lernen als Optimierung<a class="anchor-link" href="#Lernen-als-Optimierung">&#182;</a></h1><p>Optimierungsalgorithmen helfen uns, eine <strong>Zielfunktion zu minimieren (oder zu maximieren)</strong>. Ein solches Ziel ist in <strong>neuronalen Netzen</strong> einfach eine <strong>mathematische Funktion (E)</strong>, die von den <strong>internen lernbaren Parametern (W)</strong> des Modells abhängt.</p>
+<p>Diese <strong>Parameter</strong> werden bei der Berechnung der <strong>erwarteten Werte (Y)</strong> aus dem Satz von <strong>Prädiktoren (X)</strong> verwendet, die im Modell verwendet werden.</p>
+<p><img src="./backprop-sketch/basic_net.png" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><p>Schritte zur <strong>Erreichung der erwarteten Ausgabe</strong> werden unternommen, um eine <strong>optimale Lösung zu finden</strong>, z.B Verlust $E$ minimieren.</p>
+<p>Diese <strong>Parameter</strong> werden im <strong>Trainingsprozess des Netzwerks</strong> durch Optimierung aktualisiert, die <strong>lokal verfügbare Informationen</strong> ausnutzt [4].</p>
+<p><img src="./backprop-sketch/basic_net.png" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/1.png">
-  <span style="vertical-align: middle; display: inline; font-size:15px">Lassen Sie ein neuronales Netzwerk überwachtes lernen.</span>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Neuronale-Netzwerkarchitektur">Neuronale Netzwerkarchitektur<a class="anchor-link" href="#Neuronale-Netzwerkarchitektur">&#182;</a></h2><div>
-  <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/1.png">
-  <span style="vertical-align: middle; display: inline; font-size:15px">Die Neuronen sind mit synaptischen Gewichten $w_{ij}$ verbunden.</span>
-</div>
+  <span style="vertical-align: middle; display: inline; font-size:15px">Neuronale Konnektivität durch Interneuron Gewichte und Vorspannungen  $w_{ij}$. </span>
+</div><p><em>Figur angepasst von [1]</em></p>
+
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Neuronale-Aktivierungsfunktion">Neuronale Aktivierungsfunktion<a class="anchor-link" href="#Neuronale-Aktivierungsfunktion">&#182;</a></h2><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/2.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
-      Gesamteingabe $ x $, 
-      Aktivierungsfunktion $ f (x) $,
-      Ausgabe $ y = f (x) $
+      Gesamteingabe $ x_j = \sum_{i\in in(j)} w_{ij} y_i +b_j $, 
+      Aktivierungsfunktion $ f (x_j) $,
+      Ausgabe $ y_j = f (x_j) $
   </span>
 </div>
 </div>
@@ -13250,15 +13358,9 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Neuronale-Aktivierungsfunktion">Neuronale Aktivierungsfunktion<a class="anchor-link" href="#Neuronale-Aktivierungsfunktion">&#182;</a></h2><p>$ f (x) $ muss eine nichtlineare Funktion sein, sonst kann das neuronale Netzwerk nur lineare Modelle lernen.</p>
-<p>Jede Aktivierungsfunktion (oder Nichtlinearität) nimmt eine einzelne Zahl und führt eine bestimmte feste mathematische Operation darauf aus.</p>
-<ul>
-<li>Sigmoid $ f (x) = 1 / (1 + e ^ {- x}) $
-    - Sigmoide sättigen undverschwindenden Gradient
-    - Sigmoid-Ausgänge sind nicht nullzentriert
-    - Hat glatte Steigung.
-    - Gut für einen Klassifikator.</li>
-</ul>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><p>$ f (x) $ muss eine <strong>nichtlineare Funktion</strong> sein, sonst kann das neuronale Netzwerk nur lineare Modelle lernen.</p>
+<p>Jede <strong>Aktivierungsfunktion</strong> (oder Nichtlinearität) nimmt eine einzelne Zahl und führt eine bestimmte feste <strong>mathematische Operation</strong> darauf aus.</p>
+<p><img src="./backprop-sketch/squashings.png" alt=""></p>
 
 </div>
 </div>
@@ -13266,13 +13368,36 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Neuronale-Aktivierungsfunktion">Neuronale Aktivierungsfunktion<a class="anchor-link" href="#Neuronale-Aktivierungsfunktion">&#182;</a></h2><p>$ f (x) $ muss eine nichtlineare Funktion sein, sonst kann das neuronale Netzwerk nur lineare Modelle lernen.</p>
-<p>Jede Aktivierungsfunktion (oder Nichtlinearität) nimmt eine einzelne Zahl und führt eine bestimmte feste mathematische Operation darauf aus.</p>
-<ul>
-<li>Tanh $ f(x) = \frac {e ^ {x} - e ^ {- x}} {e ^ {x} + e ^ {- x}} $
-    - Der Gradient ist für Tanh stärker als für Sigmoid (Derivate sind steiler).
-    - Tanh hat auch das Problem des verschwindenden Gradient.</li>
-</ul>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><table>
+<thead><tr>
+<th style="text-align:center">Sigmoid</th>
+<th style="text-align:center">ReLu</th>
+<th style="text-align:center">Tanh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$ f (x) = 1 / (1 + e ^ {- x}) $</td>
+<td style="text-align:center">$ f (x) = max (0, x) $</td>
+<td style="text-align:center">$ f(x) = \frac {e ^ {x} - e ^ {- x}} {e ^ {x} + e ^ {- x}} $</td>
+</tr>
+<tr>
+<td style="text-align:center">glatte Steigung</td>
+<td style="text-align:center">weniger rechenintensiv als tanh und sigmoid, da es sich um einfachere mathematische Operationen handelt</td>
+<td style="text-align:center">Starke Nichtlinearität</td>
+</tr>
+<tr>
+<td style="text-align:center">sättigen und verschwindenden Gradient</td>
+<td style="text-align:center">vermeidet und behebt das Problem des verschwindenden Gradient</td>
+<td style="text-align:center">hat auch das Problem mit verschwindenden Gradient</td>
+</tr>
+<tr>
+<td style="text-align:center">Ausgänge sind nicht nullzentriert</td>
+<td style="text-align:center">kann zu toten Neuronen führen</td>
+<td style="text-align:center">Gradient ist stärker als für Sigmoid (Derivate sind steiler)</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
@@ -13280,23 +13405,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Neuronale-Aktivierungsfunktion">Neuronale Aktivierungsfunktion<a class="anchor-link" href="#Neuronale-Aktivierungsfunktion">&#182;</a></h2><p>$ f (x) $ muss eine nichtlineare Funktion sein, sonst kann das neuronale Netzwerk nur lineare Modelle lernen.</p>
-<p>Jede Aktivierungsfunktion (oder Nichtlinearität) nimmt eine einzelne Zahl und führt eine bestimmte feste mathematische Operation darauf aus.</p>
-<ul>
-<li>ReLu $ f (x) = max (0, x) $
-    - Es vermeidet und behebt das Problem des verschwindenden Gradient.
-    - Ist weniger rechenintensiv als tanh und sigmoid, da es sich um einfachere mathematische Operationen handelt.
-    - Eine der Einschränkungen besteht darin, dass es nur in ausgeblendeten Ebenen verwendet werden sollte.
-    - ReLu kann zu toten Neuronen führen</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Nervennetzfehler-/-Verlustfunktion">Nervennetzfehler / Verlustfunktion<a class="anchor-link" href="#Nervennetzfehler-/-Verlustfunktion">&#182;</a></h2><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/3.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">Die vorhergesagte Ausgabe ergeben $y_{output}$  muss nah am Zielwert sein $y_{target}$ für alle Eingaben $x_{input}$. </span>
 </div>
@@ -13306,10 +13415,10 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Nervennetzfehler-/-Verlustfunktion">Nervennetzfehler / Verlustfunktion<a class="anchor-link" href="#Nervennetzfehler-/-Verlustfunktion">&#182;</a></h2><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/3.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
-Um zu messen, wie weit wir vom Zielwert entfernt sind, verwenden wir eine Fehlerfunktion $ E $, z.B. $E(y_{output}, y_{target})=\frac{1}{2}(y_{output}−y_{target})^2$.
+   Die Fehlerfunktion $ E $, z.B. $E(y_{output}, y_{target})=\frac{1}{2}(y_{output}−y_{target})^2$ ist das Optimierungskriterium.
   </span>
 </div>
 </div>
@@ -13318,7 +13427,7 @@ Um zu messen, wie weit wir vom Zielwert entfernt sind, verwenden wir eine Fehler
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">Vorw&#228;rtsausbreitung des neuronalen Netzwerks<a class="anchor-link" href="#Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">&#182;</a></h2><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/3.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
 Wir versorgen das Netzwerk mit Beispielen $(x_{input},y_{target})$ und aktualisieren Sie das Eingabe-Neuron.
@@ -13330,31 +13439,7 @@ Wir versorgen das Netzwerk mit Beispielen $(x_{input},y_{target})$ und aktualisi
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">Vorw&#228;rtsausbreitung des neuronalen Netzwerks<a class="anchor-link" href="#Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">&#182;</a></h2><div>
-  <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/4.png">
-  <span style="vertical-align: middle; display: inline; font-size:15px">
-Aus Gründen der Konsistenz ziehen wir in Betracht $y_1=x_{input}$. Jedes Neuron hat einen Nettoeintrag von $ x_j = \sum_{i\in in(j)} w_{ij} y_i +b_j $.
-  </span>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">Vorw&#228;rtsausbreitung des neuronalen Netzwerks<a class="anchor-link" href="#Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">&#182;</a></h2><div>
-  <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/5.png">
-  <span style="vertical-align: middle; display: inline; font-size:15px">
-Dann aktualisieren wir die Ausgabe der Neuronen in der ersten verborgenen Schicht. Dazu verwenden wir die Aktivierungsfunktion $ f (x) $.
-    </span>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">Vorw&#228;rtsausbreitung des neuronalen Netzwerks<a class="anchor-link" href="#Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">&#182;</a></h2><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/7.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
 Wir folgen den gleichen Aktualisierungen für alle Neuronen in jeder verborgenen Schicht.
@@ -13366,7 +13451,14 @@ Wir folgen den gleichen Aktualisierungen für alle Neuronen in jeder verborgenen
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p>Rückwärtspropagierung ist ein Spezialfall eines allgemeinen Gradientenverfahrens in der Optimierung, basierend auf dem mittleren quadratischen Fehler.</p>
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p><em>Rückwärtspropagierung (Backprop)</em> ist ein Spezialfall eines allgemeinen <strong>Gradientenverfahrens in der Optimierung</strong>, basierend auf dem <strong>mittleren quadratischen Fehler</strong>.</p>
 
 </div>
 </div>
@@ -13374,11 +13466,18 @@ Wir folgen den gleichen Aktualisierungen für alle Neuronen in jeder verborgenen
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p>Der Backpropagation-Algorithmus entscheidet, wie oft jedes Gewicht des Netzwerks aktualisiert werden soll, nachdem die vorhergesagte Ausgabe mit der gewünschten Ausgabe für ein bestimmtes Beispiel verglichen wurde.</p>
-<div>
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p>Backprop entscheidet, <strong>wie oft jedes Gewicht des Netzwerks aktualisiert werden soll</strong>, nachdem die vorhergesagte Ausgabe $y_{output}$ mit der gewünschten Ausgabe $y_{target}$ für ein bestimmtes Beispiel verglichen wurde, $E(y_{output}, y_{target})=\frac{1}{2}(y_{output}−y_{target})^2$.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/8.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
-    Dazu müssen wir berechnen, wie sich der Fehler in Bezug auf jedes Gewicht ändert $ \frac{dE}{dw_{ij}} $
+    Dazu müssen wir berechnen, wie sich der Fehler $E$ in Bezug auf jedes Gewicht ändert $ \frac{dE}{dw_{ij}} $
     </span>
 </div>
 </div>
@@ -13390,7 +13489,7 @@ Wir folgen den gleichen Aktualisierungen für alle Neuronen in jeder verborgenen
 <h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/8.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
-Sobald wir die Fehlerableitungen haben, können wir die Gewichte mit einer einfachen Aktualisierungsregel aktualisieren: $w_{ij} = w_{ij} - \eta \frac{dE}{dw_{ij}}$
+Sobald wir die Fehlerableitungen haben, aktualisieren wir die Gewichte, um den Fehler $E$ zu minimieren.
     </span>
 </div>
 </div>
@@ -13399,9 +13498,9 @@ Sobald wir die Fehlerableitungen haben, können wir die Gewichte mit einer einfa
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p>Gradientenabstieg (Gradient Descent) ist ein iterativer Optimierungsalgorithmus erster Ordnung zum Ermitteln des lokalen Minimums einer Funktion. Um ein lokales Minimum einer Funktion unter Verwendung eines Gradientenabfalls zu finden, werden Schritte ausgeführt, die proportional zum Negativ des Gradienten (oder ungefähren Gradienten) der Funktion am aktuellen Punkt sind.</p>
-<p>Jedes Neuron folgt grundsätzlich einem Gradientenabstieg:
- $w_{ij} = w_{ij} - \eta \frac{dE}{dw_{ij}}$</p>
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p>Backpropagation verwendet Gradientenabstiegoptimierung. Es werden <strong>Iterationen in Richtung einer Lösung</strong> durchgeführt, die <strong>proportional zum Negativ des Gradienten</strong> von $ E $ am aktuellen Punkt sind.</p>
+<p>Jedes Neuron folgt grundsätzlich das gleiche Gradientenabstieg:
+ $$ w_{ij} = w_{ij} - \eta \frac{dE}{dw_{ij}}$$</p>
 <p>Wenn der Fehler nachlässt, wenn das Gewicht zunimmt ($ \frac {dE} {dw_ {ij}} &lt;0 $), erhöhen Sie das Gewicht, andernfalls, wenn der Fehler nachlässt, wenn das Gewicht zunimmt ($ \frac {dE} { dw_ {ij}}&gt; 0 $), dann verringern Sie das Gewicht.</p>
 
 </div>
@@ -13410,11 +13509,10 @@ Sobald wir die Fehlerableitungen haben, können wir die Gewichte mit einer einfa
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p>Um $ \frac {dE} {dw_ {ij}} $ zu berechnen, müssen wir wissen, wie sich der Fehler ändert mit:</p>
-<div>
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/10.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
-die Gesamteingabe des Knotens $ \frac {dE} {dx} $ und die Ausgabe des Knotens $ \frac {dE} {dy} $
+Um $ \frac {dE} {dw_ {ij}} $ zu berechnen, müssen wir wissen, wie sich der Fehler ändert mit $ \frac {dE} {dx} $ und $ \frac {dE} {dy} $.
     </span>
 </div>
 </div>
@@ -13423,8 +13521,7 @@ die Gesamteingabe des Knotens $ \frac {dE} {dx} $ und die Ausgabe des Knotens $ 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p>Wir haben die vorhergesagte Ausgabe dieses speziellen Eingabebeispiels, damit wir berechnen können, wie sich der Fehler mit dieser Ausgabe ändert.</p>
-<div>
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/11.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
 Für die mittlerer quadratischer Fehler $E = \frac{1}{2}(y_{output}\color{black} - y_{target})^2$ wir haben $\frac{\partial E}{\partial y_{output}} = y_{output}  - y_{target}$ 
@@ -13451,9 +13548,7 @@ Jetzt wo wir haben $ \frac{dE}{dy}$ wir können $\frac{dE}{dx}$ mit der Kettenre
 <h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/12.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
-Sobald wir die Fehlerableitung in Bezug auf die Gesamteingabe eines Neuronens haben, 
-      können wir die Fehlerableitung in Bezug auf die Gewichte 
-      erhalten, die in diesen Neuronen kommen, $ \frac{\partial E}{\partial w_{ij}}= \frac{\partial x_j}{\partial w_{ij}}\frac{\partial E}{\partial x_j} = y_i  \frac{\partial E}{\partial x_j}    $
+Die Fehlerableitung in Bezug auf die Gewichte $ \frac{\partial E}{\partial w_{ij}}= \frac{\partial x_j}{\partial w_{ij}}\frac{\partial E}{\partial x_j} = y_i  \frac{\partial E}{\partial x_j}    $
     </span>
 </div>
 </div>
@@ -13470,18 +13565,168 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)-in-der-Praxis">R&#252;ckw&#228;rtspropagierung (Backpropagation) in der Praxis<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)-in-der-Praxis">&#182;</a></h1>
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Neuronale-Netzwerkarchitektur">Neuronale Netzwerkarchitektur<a class="anchor-link" href="#Neuronale-Netzwerkarchitektur">&#182;</a></h2><div>
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><p>Um den <strong>optimalen Wert der neuronalen Netzwerkparameter</strong> herauszufinden, müssen wir sie kontinuierlich mit der Backpropagation-Aktualisierungsregel iterieren.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><p>Um den <strong>optimalen Wert der neuronalen Netzwerkparameter</strong> herauszufinden, müssen wir sie kontinuierlich mit der Backpropagation-Aktualisierungsregel iterieren.</p>
+<p>Wir verwenden <strong>verschiedene Optimierungsalgorithmen (basierend auf dem Gradientenabstieg)</strong>, um eine Aktualisierungsregel bereitzustellen, und jeder Optimierungsalgorithmus hat einen anderen <strong>Ansatz zum Berechnen</strong> , <strong>Aktualisieren</strong> und <strong>Ermitteln</strong> des optimalen Werts von Modellparametern.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><p>Um den <strong>optimalen Wert der neuronalen Netzwerkparameter</strong> herauszufinden, müssen wir sie kontinuierlich mit der Backpropagation-Aktualisierungsregel iterieren.</p>
+<p>Wir verwenden <strong>verschiedene Optimierungsalgorithmen (basierend auf dem Gradientenabstieg)</strong>, um eine Aktualisierungsregel bereitzustellen, und jeder Optimierungsalgorithmus hat einen anderen <strong>Ansatz zum Berechnen</strong> , <strong>Aktualisieren</strong> und <strong>Ermitteln</strong> des optimalen Werts von Modellparametern [6].</p>
+<p>Abhängig von der Datenmenge machen wir einen <strong>Kompromiss zwischen die Genauigkeit der Parameteraktualisierung und die Zeit</strong>, die zur Durchführung einer Aktualisierung benötigt wird.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><table>
+<thead><tr>
+<th style="text-align:center">Batch Gradient Descent</th>
+<th style="text-align:center">Stochastic Gradient Descent</th>
+<th style="text-align:center">Momentum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$ w_{t+1} = w_t - \eta \nabla E(w_t)$</td>
+<td style="text-align:center">$ w_{t+1} = w_{t} - \eta \nabla E(w_{t}, x^i, y^i)$</td>
+<td style="text-align:center">$ v_{t+1} = \gamma v_t  + \eta \nabla E(w_t) \\ w_{t+1} = w_t - v_t$</td>
+</tr>
+<tr>
+<td style="text-align:center">Berechnet die Verläufe für das gesamte Dataset, um nur eine Aktualisierung durchzuführen. Dies kann daher sehr langsam sein und ist für Datasets, die nicht in den Speicher passen, nicht ausführbar. Das Modell kann nicht online aktualisiert werden.</td>
+<td style="text-align:center">Führt für jedes Trainingsbeispiel $ x^i $ und die Bezeichnung $ y^i $ eine Parameteraktualisierung durch.</td>
+<td style="text-align:center">Beschleunigt in die jeweilige Steigungsrichtung und dämpft Schwingungen.</td>
+</tr>
+<tr>
+<td style="text-align:center">Konvergiert garantiert zum globalen Minimum für konvexe Fehleroberflächen und zu einem lokalen Minimum für nichtkonvexe Oberflächen.</td>
+<td style="text-align:center">Fluktuation ermöglicht es, zu neuen und möglicherweise besseren lokalen Minima zu springen, erschwert jedoch die Konvergenz auf das genaue Minimum (Überschießen).</td>
+<td style="text-align:center">Fügt einen Impuls in Richtung gleichmäßiger Verläufe hinzu und bricht den Impuls ab, wenn sich die Verläufe in verschiedenen Richtungen befinden.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><table>
+<thead><tr>
+<th style="text-align:center">Nesterov</th>
+<th style="text-align:center">Adagrad</th>
+<th style="text-align:center">Adadelta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$ v_{t+1} = \gamma v_t  + \eta \nabla E(w_t - \gamma v_t) \\ w_{t+1} = w_t - v_t$</td>
+<td style="text-align:center">$w_{t+1} = w_t - \frac{\eta}{\sqrt{G_t + e}} g_t \\ g_t = \nabla E(w_t) \\ G_t = diag(\sum g_t )$</td>
+<td style="text-align:center">$w_{t+1} = w_t - \Delta w_t \\ \Delta w_{t} = - \frac {RMS(\Delta w_t)}{RMS(g_t)}g_t \\ g_t = \nabla E(w_t) $</td>
+</tr>
+<tr>
+<td style="text-align:center">Gibt dem Momentum eine Annäherung an die nächste Position der Parameter.</td>
+<td style="text-align:center">Passt die Lernrate an die Parameter an und führt größere Aktualisierungen für seltene und kleinere Aktualisierungen für häufige Parameter durch.</td>
+<td style="text-align:center">Erweiterung von Adagrad, die versucht, die aggressive, monoton abnehmende Lernrate zu reduzieren, indem das Fenster für akkumulierte vergangene Gradienten auf eine feste Größe beschränkt wird.</td>
+</tr>
+<tr>
+<td style="text-align:center">Kann effektiv vorausschauen, indem der Gradient nicht in Bezug auf die aktuellen Parameter $ w $ berechnet wird, sondern in Bezug auf die ungefähre zukünftige Position der Parameter</td>
+<td style="text-align:center">Das manuelle Einstellen der Lernrate entfällt, aber die Akkumulation der quadratischen Gradienten im Nenner ist problematisch (d. H. Eine Explosion der Werte).</td>
+<td style="text-align:center">Sammelt die vorherigen Steigungen in einem Teil (Gewicht), was ein schnelles Wachstum der Summe verhindert, lernt also weiter und versucht zu konvergieren.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><table>
+<thead><tr>
+<th style="text-align:center">RMSProp</th>
+<th style="text-align:center">Adaptive Moment Estimation (Adam)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$w_{t+1} = w_t - \frac{\eta}{\sqrt{1/t\sum(g_t)^2 + e}} g_t  \\ g_t = \nabla E(w_t)  $</td>
+<td style="text-align:center">$ w_{t+1} = w_t - \frac{\eta}{\sqrt{ \hat {v_t} + e}} \hat{m_t}   \\ m_{t+1} = \beta_1 m_t + (1 − \beta_1)g_t \\ v_{t+1} = \beta_2 v_t + (1 − \beta_2){g_t}^2 \\ \hat {m_t} = \frac{m_t}{1 - \beta_1} \\ \hat {v_t} = \frac{v_t}{1 - \beta_2} \\ g_t = \nabla E(w_t) $</td>
+</tr>
+<tr>
+<td style="text-align:center">Überwindet das abnehmende Lernratenproblem von adagrad und verhindert das schnelle Anwachsen der laufenden Quadratsumme der Gradienten.</td>
+<td style="text-align:center">Speichert einen exponentiell abfallenden Durchschnitt vergangener quadratischer Gradienten und einen exponentiell abfallenden Durchschnitt vergangener Gradienten, die dem Momentum ähnlich sind.</td>
+</tr>
+<tr>
+<td style="text-align:center">Kombiniert die Idee, nur das Vorzeichen des Verlaufs zu verwenden, mit der Idee, die Schrittgröße für jedes Gewicht individuell anzupassen.</td>
+<td style="text-align:center">Berechnet adaptive Lernraten für jeden Parameter für eine zuverlässige Schätzung.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><p><img src="./demo_anim.gif" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><p><img src="./loss_anim.gif" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="R&#252;ckw&#228;rtspropagierung-in-der-Praxis">R&#252;ckw&#228;rtspropagierung in der Praxis<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-in-der-Praxis">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Bin&#228;re-Klassifikation-mit-neuronalen-Netzen">Bin&#228;re Klassifikation mit neuronalen Netzen<a class="anchor-link" href="#Bin&#228;re-Klassifikation-mit-neuronalen-Netzen">&#182;</a></h1><p><img src="./backprop-sketch/hausaufgabe.png" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Neuronale-Netzwerkarchitektur">Neuronale Netzwerkarchitektur<a class="anchor-link" href="#Neuronale-Netzwerkarchitektur">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/1.png">
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/code1.png">
 </div>
@@ -13491,7 +13736,7 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Neuronale-Aktivierungsfunktion">Neuronale Aktivierungsfunktion<a class="anchor-link" href="#Neuronale-Aktivierungsfunktion">&#182;</a></h2><div>
+<h1 id="Neuronale-Aktivierungsfunktion">Neuronale Aktivierungsfunktion<a class="anchor-link" href="#Neuronale-Aktivierungsfunktion">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/2.png">
     <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/code2.png">
 </div>
@@ -13501,7 +13746,7 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">Vorw&#228;rtsausbreitung des neuronalen Netzwerks<a class="anchor-link" href="#Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">&#182;</a></h2><div>
+<h1 id="Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">Vorw&#228;rtsausbreitung des neuronalen Netzwerks<a class="anchor-link" href="#Vorw&#228;rtsausbreitung-des-neuronalen-Netzwerks">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/7.png">
     <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/code3.png">
 </div>
@@ -13511,7 +13756,7 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
+<h1 id="R&#252;ckw&#228;rtspropagierung-Training">R&#252;ckw&#228;rtspropagierung Training<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-Training">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/12.png">
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/code4.png">
 </div>
@@ -13521,21 +13766,118 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
+<h1 id="Ausf&#252;hren-des-neuronalen-Netzwerks">Ausf&#252;hren des neuronalen Netzwerks<a class="anchor-link" href="#Ausf&#252;hren-des-neuronalen-Netzwerks">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/bakprop-full.gif">
    <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/code5.png">
 </div>
 </div>
 </div>
 </div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)-Hausaufgabe">R&#252;ckw&#228;rtspropagierung (Backpropagation) Hausaufgabe<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)-Hausaufgabe">&#182;</a></h1><div>
+  <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/bakprop-full.gif">
+   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/code-homework.png">
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Gradientenabstieg-in-der-Praxis:-Parallelisierung">Gradientenabstieg in der Praxis: Parallelisierung<a class="anchor-link" href="#Gradientenabstieg-in-der-Praxis:-Parallelisierung">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Gradientenabstieg-in-der-Praxis:-Parallelisierung">Gradientenabstieg in der Praxis: Parallelisierung<a class="anchor-link" href="#Gradientenabstieg-in-der-Praxis:-Parallelisierung">&#182;</a></h1><p>Angesichts der <strong>Allgegenwart umfangreicher Datenlösungen</strong> und der <strong>Verfügbarkeit von Clustern, GPU [10], oder FPGA [11]</strong> ist es eine logische Entscheidung, <strong>neuronales Netzwerktraining zu verteilen</strong>, um es schneller zu machen.</p>
+<p>Die <strong>Optimierung des Gradientenabfalls</strong> selbst ist von Natur aus <strong>sequentiell und langsam</strong>. Verschiedene <strong>Algorithmen und Architekturen</strong> wurden vorgeschlagen, um den Gradientenabstieg zu <strong>parallelisieren und zu verteilen</strong>.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Gradientenabstieg-in-der-Praxis:-Parallelisierung">Gradientenabstieg in der Praxis: Parallelisierung<a class="anchor-link" href="#Gradientenabstieg-in-der-Praxis:-Parallelisierung">&#182;</a></h1><p><em>Cluster Parallelisierung</em></p>
+<ul>
+<li>Hogwild! [7]<ul>
+<li>Ermöglicht die parallele Durchführung von SGD-Updates auf CPUs
+    - Prozessoren dürfen auf den gemeinsamen Speicher zugreifen, ohne die Parameter zu sperren
+    - Jedes Update ändert nur einen Bruchteil aller Parameter
+    - optimale Konvergenzrate.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Downpour SGD [8]<ul>
+<li>Asynchrone Variante von SGD
+    - Läuft mehrere Repliken eines Modells parallel auf Teilmengen der Trainingsdaten
+    - Replikate kommunizieren nicht miteinander, z. durch das Teilen von Gewichten oder Aktualisierungen
+    - Die Parameter sind ständig dem Risiko von Abweichungen ausgesetzt, was die Konvergenz behindert.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>TensorFlow [9]<ul>
+<li>Open-Source-Framework für die Implementierung und Bereitstellung von groß angelegten maschinellen Lernmodellen
+    - stützt sich auf einen Berechnungsgraphen, der für jedes Gerät in einen Untergraphen aufgeteilt wird, während die Kommunikation über Sende- / Empfangsknotenpaare erfolgt.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Literaturverzeichnis">Literaturverzeichnis<a class="anchor-link" href="#Literaturverzeichnis">&#182;</a></h1><p>[1] <a href="https://google-developers.appspot.com/machine-learning/">https://google-developers.appspot.com/machine-learning/</a> (letzter Besuch, Dez 2019)</p>
+<p>[2] Boyd, S., &amp; Vandenberghe, L. (2004). Convex optimization. Cambridge university press.</p>
+<p>[3] Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). Deep learning. MIT press.</p>
+<p>[4] Barnard, E. (1992). Optimization for training neural nets. IEEE transactions on Neural Networks, 3(2), 232-240.</p>
+<p>[5] Ruder, S. (2016). An overview of gradient descent optimization algorithms. arXiv preprint arXiv:1609.04747.</p>
+<p>[6] Haykin, S. (2010). Neural Networks and Learning Machines, 3/E. Pearson Education.</p>
+<p>[7] Feng Niu, Benjamin Recht, R Christopher, and Stephen J Wright. Hogwild!: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent. pages 1–22, 2011.</p>
+<p>[8] Jeffrey Dean, Greg S. Corrado, Rajat Monga, Kai Chen, Matthieu Devin, Quoc V. Le, Mark Z. Mao, Marc Aurelio Ranzato, Andrew Senior, Paul Tucker, Ke Yang, and Andrew Y. Ng. Large Scale Distributed Deep Networks. NIPS 2012: Neural Information Processing Systems, pages 1–11, 2012.</p>
+<p>[9] Martin Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen, Craig Citro, Greg Corrado, Andy Davis, Jeffrey Dean, Matthieu Devin, Sanjay Ghemawat, Ian Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard, Yangqing Jia, Lukasz Kaiser, Manjunath Kudlur, Josh Levenberg, Dan Man, Rajat Monga, Sherry Moore, Derek Murray, Jon Shlens, Benoit Steiner, Ilya Sutskever, Paul Tucker, Vincent Vanhoucke, Vijay Vasudevan, Oriol Vinyals, Pete Warden, Martin Wicke, Yuan Yu, and Xiaoqiang Zheng. TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems. 2015.</p>
+<p>[10] Song, F., Tomov, S., &amp; Dongarra, J. (2012, June). Enabling and scaling matrix computations on heterogeneous multicore and multi-GPU systems. In Proceedings of the 26th ACM international conference on Supercomputing (pp. 365-376). ACM.</p>
+<p>[11] Liu, Q., Liu, J., Sang, R., Li, J., Zhang, T., &amp; Zhang, Q. (2018). Fast neural network training on FPGA using quasi-newton optimization method. IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 26(8), 1575-1579.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Volessung-Notebook-herunterladen">Volessung Notebook herunterladen<a class="anchor-link" href="#Volessung-Notebook-herunterladen">&#182;</a></h1><p><img src="./qrcode.png" style="width = 200, height=200"/></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Programmiercode-f&#252;r-die-Klassifizierungsaufgabe">Programmiercode f&#252;r die Klassifizierungsaufgabe<a class="anchor-link" href="#Programmiercode-f&#252;r-die-Klassifizierungsaufgabe">&#182;</a></h1>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">t</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -13669,7 +14011,8 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
             <span class="n">network</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
 
         <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./testing_dataset.in&#39;</span><span class="p">)</span>
-
+        <span class="n">out_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">test_data</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">new_in</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_in</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -13677,14 +14020,43 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
             <span class="n">new_in</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_in</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">new_in</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
             <span class="n">new_in</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_in</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">new_in</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
             <span class="n">output</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">forward_propagation</span><span class="p">(</span><span class="n">new_in</span><span class="p">)</span>
+            <span class="n">test_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_in</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">output</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+1&#39;</span><span class="p">)</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;+1&#39;</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-1&#39;</span><span class="p">)</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;-1&#39;</span>
+            <span class="n">out_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+                
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./expected_dataset.in&#39;</span><span class="p">)</span>
+        <span class="n">out_expect_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">new_in</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_in</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">out_expect_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_in</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>    
 
     <span class="k">except</span> <span class="ne">EOFError</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-
+        
+    <span class="c1"># debug </span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;./backprop-sketch/training_data.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training data&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;./backprop-sketch/testing_data.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training and Testing data&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">out_data</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">out_expect_data</span><span class="p">,</span><span class="s1">&#39;r+&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Class labels&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -13703,49 +14075,44 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>-1
-+1
-+1
--1
-+1
--1
--1
--1
--1
-+1
-+1
--1
--1
--1
--1
--1
--1
--1
-+1
-+1
--1
--1
--1
--1
--1
--1
-+1
--1
--1
--1
-+1
--1
-+1
--1
-+1
--1
-+1
--1
--1
-+1
-</pre>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
 </div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
 </div>
 
 </div>
@@ -13755,7 +14122,293 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Imports-of-useful-libraries">Imports of useful libraries<a class="anchor-link" href="#Imports-of-useful-libraries">&#182;</a></h1>
+<h1 id="Programmiercode-Funktionen-f&#252;r-Gradientenabstiegsalgorithmen">Programmiercode Funktionen f&#252;r Gradientenabstiegsalgorithmen<a class="anchor-link" href="#Programmiercode-Funktionen-f&#252;r-Gradientenabstiegsalgorithmen">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Gradientenabstieg (Gradient Descent - GD)</span>
+
+<span class="c1"># Ist der am häufigsten verwendete und beliebte iterative Algorithmus für maschinelles Lernen.</span>
+<span class="c1"># Es ist auch die Grundlage für andere Optimierungsalgorithmen.</span>
+
+<span class="c1"># Da bei der Backpropagation zur Aktualisierung der Parameter die Ableitung des Verlustes w.r.t. ein Parameter wird berechnet.</span>
+<span class="c1"># Diese Ableitung kann von mehr als einer Variablen abhängig sein, daher wird für die Berechnung die Multiplikationskettenregel verwendet.</span>
+<span class="c1"># Zu diesem Zweck ist ein Farbverlauf erforderlich. Ein Gradient ist ein Vektor, der die Anstiegsrichtung angibt.</span>
+<span class="c1"># Für die Gradientenberechnung müssen Verlustableitungen mit den Parametern berechnet und die Parameter in </span>
+<span class="c1"># der entgegengesetzten Richtung des Gradienten aktualisiert werden.</span>
+
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">w</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">fx</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">fx</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">fx</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">fx</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="k">def</span> <span class="nf">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">fx</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">fx</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">fx</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">fx</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">do_gradient_descent</span><span class="p">():</span>
+    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span>
+    <span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
+        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Stochastischer Gradientsabstieg</span>
+<span class="c1"># aktualisiert die Parameter für jede Beobachtung, was zu mehr Aktualisierungen führt. Es handelt sich also um einen schnelleren Ansatz, der bei der schnelleren Entscheidungsfindung hilft.</span>
+
+<span class="c1"># Schnellere Updates in verschiedene Richtungen können bemerkt werden.</span>
+<span class="c1"># Hier finden viele Schwingungen statt, die Aktualisierungen mit höherer Varianz verursachen, d. H. Verrauschte Aktualisierungen.</span>
+<span class="c1"># Diese lauten Updates helfen bei der Suche nach neuen und besseren lokalen Minima.</span>
+<span class="c1"># Nachteile von SGD</span>
+<span class="c1"># - Aufgrund des gierigen Ansatzes wird der Gradient nur angenähert (stochastisch).</span>
+<span class="c1"># - Aufgrund häufiger Schwankungen bleibt das Überschwingen in der Nähe der gewünschten exakten Minima.</span>
+
+<span class="k">def</span> <span class="nf">do_stochastic_gradient_descent</span><span class="p">():</span>
+    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span>
+    <span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
+        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Impulsbasierter Gradientenabstieg</span>
+
+<span class="c1"># Betrachten Sie einen Fall, in dem Sie zum Erreichen Ihres gewünschten Ziels ständig aufgefordert werden, dasselbe zu befolgen</span>
+<span class="c1"># Wenn Sie sich sicher sind, dass Sie die richtige Richtung eingeschlagen haben, gehen Sie größere Schritte</span>
+<span class="c1"># und Sie bekommen immer mehr Schwung in die gleiche Richtung.</span>
+<span class="c1"># Ähnlich verhält es sich, wenn sich der Farbverlauf über einen längeren Zeitraum auf einer ebenen Fläche befindet, </span>
+<span class="c1"># anstatt konstante Schritte auszuführen</span>
+<span class="c1"># Es sollten größere Schritte unternommen werden, um die Dynamik aufrechtzuerhalten.</span>
+<span class="c1">#Dieser Ansatz wird als impulsbasierter Gradientenabstieg bezeichnet.</span>
+
+<span class="c1"># Dieser Algorithmus fügt einen Impuls in Richtung gleichmäßiger Verläufe hinzu und bricht den Impuls ab, wenn die </span>
+<span class="c1"># Verläufe in unterschiedliche Richtungen verlaufen.</span>
+
+<span class="c1"># Probleme mit impulsbasiertem Gefälle</span>
+<span class="c1"># - In dem Tal, das zu genau gewünschten Minima führt, gibt es eine große Anzahl von Schwingungen, die auf der Impuls-GD basieren.</span>
+<span class="c1"># Weil es die Minima mit größeren Schritten überschreitet und eine Kehrtwende ausführt, aber erneut überschreitet, wird dieser Vorgang wiederholt.</span>
+<span class="c1"># Was bedeutet, dass es nicht immer gut ist, sich mit größeren Schritten zu bewegen.</span>
+<span class="c1"># - Impulsbasierte GD oszilliert eine große Anzahl von Malen innerhalb und außerhalb der Minima.</span>
+
+<span class="k">def</span> <span class="nf">do_momentum_based_gradient_descent</span><span class="p">():</span>
+    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
+    <span class="n">v_w</span><span class="p">,</span> <span class="n">v_b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
+        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">v_w</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_w</span> <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
+        <span class="n">v_b</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_b</span> <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">v_w</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">v_b</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Nesterov beschleunigte das Gefälle</span>
+
+<span class="c1"># Bei impulsbasierter GD führt der Gradient in Richtung Tal (Minima-Region) viele Kehrtwende (Oszillationen) durch, bevor er konvergiert.</span>
+<span class="c1"># Dieses Problem wurde ursprünglich von einem Forscher namens Yurii Nesterov identifiziert und beantwortet.</span>
+<span class="c1"># Er schlug vor, die Bewegung zuerst anhand des Verlaufsbetrags (vorheriger Impuls) durchzuführen und dann den temporären Gradienten zu berechnen</span>
+<span class="c1"># an dieser Stelle und aktualisieren Sie die Parameter. Mit anderen Worten, bevor ein Update direkt durchgeführt wird, schaut </span>
+<span class="c1"># es nach vorne, indem es mit verschoben wird</span>
+<span class="c1"># das vorherige Momentum dann findet es, was der Gradient sein sollte.</span>
+<span class="c1"># Diese Vorausschau hilft der NAG, ihre Arbeit schneller zu Ende zu bringen (und die Minima zu finden) als die auf Impulsen basierende GD.</span>
+<span class="c1"># Daher sind die Oszillationen im Vergleich zur impulsbasierten GD geringer und es besteht auch eine geringere Wahrscheinlichkeit, </span>
+<span class="n">dass</span> <span class="n">die</span> <span class="n">Minima</span> <span class="n">verfehlt</span> <span class="n">werden</span><span class="o">.</span>
+
+<span class="k">def</span> <span class="nf">do_nag_gradient_descent</span><span class="p">():</span>
+    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
+    <span class="n">v_w</span><span class="p">,</span> <span class="n">v_b</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.9</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
+        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_w</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_b</span>
+ 
+       <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
+ 
+        <span class="n">v_w</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_w</span> <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
+        <span class="n">v_b</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_b</span> <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Adagrad</span>
+<span class="c1"># Es nimmt die Lernrate (η) basierend auf der Sparsamkeit der Merkmale an. Also die Parameter mit kleinen Updates (spärliche Features)</span>
+<span class="c1"># haben eine hohe Lernrate, während die Parameter mit großen Aktualisierungen (dichten Funktionen) eine niedrige Lernrate haben.</span>
+<span class="c1"># Daher verwendet adagrad für jeden Parameter eine andere Lernrate.</span>
+<span class="c1"># v (t) summiert die laufende Quadratsumme der Farbverläufe</span>
+
+<span class="c1"># Nachteil mit Adagrad</span>
+<span class="c1"># - Die Lernrate fällt aggressiv ab</span>
+<span class="c1"># Für Parameter (insbesondere Bias), die dichten Features entsprechen, wird nach einigen Aktualisierungen</span>
+<span class="c1"># Die Lernrate nimmt schnell ab, da der Nenner aufgrund der Anhäufung von quadratischen Gradienten schnell wächst.</span>
+<span class="c1"># Nach einer begrenzten Anzahl von Aktualisierungen lernt der Algorithmus nicht mehr und konvergiert langsam, auch </span>
+<span class="c1"># wenn er für eine große Anzahl von Epochen ausgeführt wird.</span>
+<span class="c1"># Der Gradient erreicht ein schlechtes Minimum (in der Nähe der gewünschten Minima), aber nicht das genaue Minimum.</span>
+<span class="c1"># Daher führt adagrad zu einer abnehmenden und abnehmenden Lernrate für Bias-Parameter.</span>
+
+<span class="k">def</span> <span class="nf">do_adagrad</span><span class="p">():</span>
+    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
+    <span class="n">v_w</span><span class="p">,</span> <span class="n">v_b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
+        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">v_w</span> <span class="o">+=</span> <span class="n">dw</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">v_b</span> <span class="o">+=</span> <span class="n">db</span><span class="o">**</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_w</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">dw</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_b</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">db</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># RMSProp</span>
+<span class="c1"># RMSProp überwindet das Problem der abnehmenden Lernrate von adagrad und beugt dem vor</span>
+<span class="c1"># das schnelle Wachstum in v (t) (d. h. akkumuliert die laufende Quadratsumme der Gradienten)</span>
+<span class="c1"># Anstatt von Anfang an quadratische Verläufe zu akkumulieren, wird der vorherige akkumuliert</span>
+<span class="c1"># Gradienten in einem Teil (Gewicht), die ein schnelles Wachstum von v (t) verhindern, und aufgrund dessen lernt der Algorithmus weiter und versucht zu konvergieren.</span>
+
+<span class="c1"># Probleme mit RMSProp</span>
+<span class="c1"># - Große Anzahl von Schwingungen mit hoher Lernrate oder großem Gradienten</span>
+
+<span class="k">def</span> <span class="nf">do_RMSProp</span><span class="p">():</span>
+    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
+    <span class="n">v_w</span><span class="p">,</span> <span class="n">v_b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
+        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">v_w</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">v_w</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">beta</span><span class="p">)</span> <span class="o">*</span> <span class="n">dw</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">v_b</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">v_b</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">beta</span><span class="p">)</span> <span class="o">*</span> <span class="n">db</span><span class="o">**</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_w</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">dw</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_b</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">db</span>
+    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Adam</span>
+<span class="c1"># Adaptive Moment Estimation (Adam) berechnet den exponentiell abfallenden Durchschnitt früherer Gradienten m (t)</span>
+<span class="c1"># zusammen mit einer adaptiven Lernrate. Adam ist eine kombinierte Form von Momentum-basiertem GD und RMSProp.</span>
+<span class="c1"># In der momentumbasierten GD werden frühere Gradienten (Verlauf) verwendet, um den aktuellen Gradienten zu berechnen.</span>
+<span class="c1"># In RMSProp werden frühere Verläufe (Verlauf) verwendet, um die Lernrate basierend auf den Funktionen anzupassen.</span>
+<span class="c1"># Adam befasst sich daher mit adaptiver Lernrate und adaptivem Impuls bei RMSProp</span>
+<span class="c1"># Stellt sicher, dass v (t) nicht schnell wächst, um die Wahrscheinlichkeit einer Abnahme der Lernrate und von m (t) zu vermeiden</span>
+<span class="c1"># Impulsbasierte GD stellt sicher, dass der exponentiell abfallende Durchschnitt früherer Gradienten und nicht der aktuelle Gradient berechnet wird.</span>
+
+<span class="c1"># Also in Adam im Gegensatz zu RMSProp weniger Oszillationen und es bewegt sich deterministischer in die richtige Richtung</span>
+<span class="c1"># was zu einer schnelleren Konvergenz und einer besseren Optimierung führt.</span>
+
+<span class="k">def</span> <span class="nf">do_Adam</span><span class="p">():</span>
+    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
+    <span class="n">v_w</span><span class="p">,</span> <span class="n">v_b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">m_w</span><span class="p">,</span> <span class="n">m_b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">num_updates</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+        <span class="n">dw</span><span class="p">,</span> <span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+            <span class="n">dw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grad_w</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="n">db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grad_b</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">num_updates</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">m_w</span> <span class="o">=</span> <span class="n">beta1</span> <span class="o">*</span> <span class="n">m_w</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">beta1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dw</span>
+        <span class="n">m_b</span> <span class="o">=</span> <span class="n">beta1</span> <span class="o">*</span> <span class="n">m_b</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">beta1</span><span class="p">)</span> <span class="o">*</span> <span class="n">db</span>
+        <span class="n">v_w</span> <span class="o">=</span> <span class="n">beta2</span> <span class="o">*</span> <span class="n">v_w</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">beta2</span><span class="p">)</span> <span class="o">*</span> <span class="n">dw</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">v_b</span> <span class="o">=</span> <span class="n">beta2</span> <span class="o">*</span> <span class="n">v_b</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">beta2</span><span class="p">)</span> <span class="o">*</span> <span class="n">db</span><span class="o">**</span><span class="mi">2</span>
+        <span class="c1">#m_w_c, m_b_c, v_w_c and v_b_c for bias correction   </span>
+        <span class="n">m_w_c</span> <span class="o">=</span> <span class="n">m_w</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">num_updates</span><span class="p">))</span>
+        <span class="n">m_b_c</span> <span class="o">=</span> <span class="n">m_b</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">num_updates</span><span class="p">))</span>
+        <span class="n">v_w_c</span> <span class="o">=</span> <span class="n">v_w</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">beta2</span><span class="p">,</span> <span class="n">num_updates</span><span class="p">))</span>
+        <span class="n">v_b_c</span> <span class="o">=</span> <span class="n">v_b</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">beta2</span><span class="p">,</span> <span class="n">num_updates</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_w_c</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">m_w_c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_b_c</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">m_b_c</span>
+    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Analyse-von-Gradientenabstiegsmethoden---Implementierung">Analyse von Gradientenabstiegsmethoden - Implementierung<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden---Implementierung">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -13832,7 +14485,7 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Helpers-to-create-optimization-paths">Helpers to create optimization paths<a class="anchor-link" href="#Helpers-to-create-optimization-paths">&#182;</a></h1>
+<h1 id="Hilfsfunktionen">Hilfsfunktionen<a class="anchor-link" href="#Hilfsfunktionen">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14053,7 +14706,7 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Functions">Functions<a class="anchor-link" href="#Functions">&#182;</a></h1>
+<h1 id="Funktionen-zur-Problemdefinition">Funktionen zur Problemdefinition<a class="anchor-link" href="#Funktionen-zur-Problemdefinition">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14128,8 +14781,8 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We shall restrict our attention to 3-dimensional problems for right now (i.e. optimizing over only 2 parameters), though what follows can be extended to higher dimensions by plotting all pairs of parameters against each other, effectively projecting the problem to 3-dimensions.</p>
-<p>The Wikipedia article on <a href="https://en.wikipedia.org/wiki/Test_functions_for_optimization">Test functions for optimization</a> has a few functions that are useful for evaluating optimization algorithms. In particular, we shall look at <strong>Beale's function</strong>:</p>
+<p>Wir betrachten derzeit 3-dimensionale Probleme (d. H. Die Optimierung über nur 2 Parameter), obwohl das Folgende auf höhere Dimensionen ausgedehnt werden kann, indem alle Parameterpaare gegeneinander geplottet werden, wodurch das Problem effektiv auf 3-Dimensionen projiziert wird.
+Wir betrachten die bekannte <strong> Beale-Funktion </strong>:</p>
 $$
 f(x, y) = (1.5 - x + xy)^2 + (2.25 - x + xy^2)^2 + (2.625 - x + xy^3)^2
 $$
@@ -14179,43 +14832,10 @@ $$
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[168]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">beales_problem</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">beales_problem</span><span class="o">.</span><span class="n">x0</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[168]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>tensor(153.9943)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Grid">Grid<a class="anchor-link" href="#Grid">&#182;</a></h1>
+<h1 id="Parameter-Gittersuche">Parameter-Gittersuche<a class="anchor-link" href="#Parameter-Gittersuche">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14330,7 +14950,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Run">Run<a class="anchor-link" href="#Run">&#182;</a></h1>
+<h1 id="Versuchsaufbau-und-Durchf&#252;hrung">Versuchsaufbau und Durchf&#252;hrung<a class="anchor-link" href="#Versuchsaufbau-und-Durchf&#252;hrung">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14437,13 +15057,13 @@ Please use `tqdm.notebook.tqdm` instead of `tqdm.tqdm_notebook`
 
  
  
-<div id="fbcac9eb-93cd-4ebd-bd2a-f7500fe71950"></div>
+<div id="6eb60f19-6d3e-4b65-b303-8acad592192d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#fbcac9eb-93cd-4ebd-bd2a-f7500fe71950');
+var element = $('#6eb60f19-6d3e-4b65-b303-8acad592192d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "38ebcfc6a1b640179d735d6163f51345", "version_minor": 0, "version_major": 2}
+{"model_id": "38ebcfc6a1b640179d735d6163f51345", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -14490,7 +15110,7 @@ SGD 155.09430099999994 	 True 	 False
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Static-plots">Static plots<a class="anchor-link" href="#Static-plots">&#182;</a></h1>
+<h1 id="Versuchsgraphen-(statisch)">Versuchsgraphen (statisch)<a class="anchor-link" href="#Versuchsgraphen-(statisch)">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14646,7 +15266,7 @@ SGD 155.09430099999994 	 True 	 False
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Animation">Animation<a class="anchor-link" href="#Animation">&#182;</a></h1>
+<h1 id="Versuchsgraphen-(animiert)">Versuchsgraphen (animiert)<a class="anchor-link" href="#Versuchsgraphen-(animiert)">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14814,7 +15434,7 @@ SGD 155.09430099999994 	 True 	 False
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2d-anim">2d anim<a class="anchor-link" href="#2d-anim">&#182;</a></h1>
+<h1 id="2D-Animation">2D Animation<a class="anchor-link" href="#2D-Animation">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14911,7 +15531,7 @@ SGD 155.09430099999994 	 True 	 False
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3d-anim">3d anim<a class="anchor-link" href="#3d-anim">&#182;</a></h1>
+<h1 id="3D-Animation">3D Animation<a class="anchor-link" href="#3D-Animation">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -15011,7 +15631,7 @@ SGD 155.09430099999994 	 True 	 False
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Loss-animation">Loss animation<a class="anchor-link" href="#Loss-animation">&#182;</a></h1>
+<h1 id="Verlustfunktion-animation">Verlustfunktion animation<a class="anchor-link" href="#Verlustfunktion-animation">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -15082,264 +15702,6 @@ SGD 155.09430099999994 	 True 	 False
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;loss_anim.gif&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s2">&quot;imagemagick&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Gradient descent </span>
-
-<span class="c1"># Is most commonly used and popular iterative machine learning algorithm. It is also the foundation for other optimization algorithms.</span>
-
-<span class="c1"># Since during backpropagation for updating the parameters, the derivative of loss w.r.t. a parameter is calculated. This derivative can be dependent on more than one variable so for its calculation multiplication chain rule is used. For this purpose, a Gradient is required. A gradient is a vector indicating the direction of increase.</span>
-<span class="c1"># For gradient calculation, we need to calculate derivatives of loss w.r.t the parameters and update the parameters in the opposite direction of the gradient.</span>
-
-<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">w</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="n">fx</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">fx</span> <span class="err">—</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">fx</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">fx</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span>
-
-<span class="k">def</span> <span class="nf">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="n">fx</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">fx</span> <span class="err">—</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">fx</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">fx</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">do_gradient_descent</span><span class="p">():</span>
-    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span>
-    <span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">1000</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
-        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
-        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
-            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="err">—</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="err">—</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Stochastic gradient descent </span>
-<span class="c1"># updates the parameters for each observation which leads to more number of updates. So it is a faster approach which helps in quicker decision making.</span>
-
-<span class="k">def</span> <span class="nf">do_stochastic_gradient_descent</span><span class="p">():</span>
-    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span>
-    <span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">1000</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
-        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
-        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
-            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-            <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="err">—</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
-            <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="err">—</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
-            
-<span class="c1"># Quicker updates in different directions can be noticed. Here, lots of oscillations take place which causes the updates with higher variance i.e. noisy updates. These noisy updates help in finding new and better local minima.</span>
-<span class="c1"># Disadvantages of SGD</span>
-<span class="c1"># - Because of the greedy approach, it only approximates (stochastics) the gradient.</span>
-<span class="c1"># - Due to frequent fluctuations, it will keep overshooting near to the desired exact minima.</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Momentum-based gradient descent</span>
-
-<span class="c1"># Consider a case where in order to reach to your desired destination you are continuously being asked to follow the same direction and once you become confident that you are following the right direction then you start taking bigger steps and you keep getting momentum in that same direction.</span>
-<span class="c1"># Similar to this if the gradient is in a flat surface for long term then rather than taking constant steps it should take bigger steps and keep the momentum continue. This approach is known as momentum based gradient descent.</span>
-
-<span class="k">def</span> <span class="nf">do_momentum_based_gradient_descent</span><span class="p">():</span>
-    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
-    <span class="n">v_w</span><span class="p">,</span> <span class="n">v_b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
-        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
-        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
-            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-        <span class="n">v_w</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_w</span> <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
-        <span class="n">v_b</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_b</span> <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="err">—</span> <span class="n">v_w</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="err">—</span> <span class="n">v_b</span>
-        
-<span class="c1"># This algorithm adds momentum in the direction of consistent gradients and cancels the momentum if the gradients are in different directions.</span>
-
-<span class="c1"># Issues with momentum based Gradient descent</span>
-<span class="c1"># - In the valley that leads to exact desired minima, there are a large number of oscillations using momentum-based GD. Because it overshoots the minima with larger steps and takes a U-turn but again overshoots so this process repeats. Which means moving with larger steps is not always good.</span>
-<span class="c1"># - Momentum-based GD oscillates for a large number of times in and out of the minima.</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Nesterov accelerated Gradient Descent</span>
-
-<span class="c1"># In momentum based GD as the gradient heads to the valley(minima region), it makes a lot of U-turns(oscillations) before it converges. This problem was initially identified and responded by a researcher named Yurii Nesterov.</span>
-<span class="c1"># He suggested, make the movement first by history amount(previous momentum) then calculate the temporary gradient at this point and then update the parameters. In other words, before making an update directly first it looks ahead by moving with the previous momentum then it finds what the gradient should be.</span>
-<span class="c1"># This looking ahead helps NAG in finishing its job(finding the minima) quicker than momentum-based GD. Hence the oscillations are less compared to momentum based GD and also there are fewer chances of missing the minima.</span>
-
-<span class="k">def</span> <span class="nf">do_nag_gradient_descent</span><span class="p">():</span>
-    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
-    <span class="n">v_w</span><span class="p">,</span> <span class="n">v_b</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.9</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
-        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
-        <span class="c1">#compute the look ahead value</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="err">—</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_w</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="err">—</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_b</span>
- 
-       <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
-           <span class="c1">#compute the derivatives using look ahead value</span>
-           <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-           <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-       <span class="c1">#Now move further in the opposite direction of that gradient</span>
-       <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="err">—</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
-       <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="err">—</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
- 
-      <span class="c1">#Now update the previous momentum</span>
-      <span class="n">v_w</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_w</span> <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">dw</span>
-      <span class="n">v_b</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">v_b</span> <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">db</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Adagrad</span>
-<span class="c1"># It adopts the learning rate(η) based on the sparsity of features. So the parameters with small updates(sparse features) have high learning rate whereas the parameters with large updates(dense features) have low learning rate. Therefore adagrad uses a different learning rate for each parameter.</span>
-<span class="c1"># v(t) accumulates the running sum of square of the gradients</span>
-<span class="k">def</span> <span class="nf">do_adagrad</span><span class="p">():</span>
-    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
-    <span class="n">v_w</span><span class="p">,</span> <span class="n">v_b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
-        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
-        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
-            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-        <span class="n">v_w</span> <span class="o">+=</span> <span class="n">dw</span><span class="o">**</span><span class="mi">2</span>
-        <span class="n">v_b</span> <span class="o">+=</span> <span class="n">db</span><span class="o">**</span><span class="mi">2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_w</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">dw</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_b</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">db</span>
-
-<span class="c1"># Disadvantage with Adagrad</span>
-<span class="c1"># - The learning rate decays aggressively</span>
-<span class="c1"># For parameters(especially bias) corresponding to dense features, after a few updates, the learning rate decays rapidly as the denominator grows rapidly due to the accumulation of squared gradients. So after a finite number of updates, the algorithm refuses to learn and converges slowly even if we run it for a large number of epochs. The gradient reaches to a bad minimum (close to desired minima) but not at exact minima. So adagrad results in decaying and decreasing learning rate for bias parameters.</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># RMSProp</span>
-<span class="c1"># RMSProp overcomes the decaying learning rate problem of adagrad and prevents the rapid growth in v(t) (i.e. accumulates the running sum of square of the gradients)</span>
-<span class="c1"># Instead of accumulating squared gradients from the beginning, it accumulates the previous gradients in some portion(weight) which prevents rapid growth of v(t) and due to this the algorithm keeps learning and tries to converge.</span>
-
-<span class="k">def</span> <span class="nf">do_RMSProp</span><span class="p">():</span>
-    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
-    <span class="n">v_w</span><span class="p">,</span> <span class="n">v_b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
-        <span class="n">dw</span><span class="p">,</span><span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
-        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
-            <span class="n">dw</span> <span class="o">+=</span> <span class="n">grad_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-            <span class="n">db</span> <span class="o">+=</span> <span class="n">grad_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-        <span class="n">v_w</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">v_w</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="err">—</span> <span class="n">beta</span><span class="p">)</span> <span class="o">*</span> <span class="n">dw</span><span class="o">**</span><span class="mi">2</span>
-        <span class="n">v_b</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">v_b</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="err">—</span> <span class="n">beta</span><span class="p">)</span> <span class="o">*</span> <span class="n">db</span><span class="o">**</span><span class="mi">2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_w</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">dw</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_b</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">db</span>
-        
-<span class="c1"># Issues with RMSProp</span>
-<span class="c1"># - Large number of oscillations with high learning rate or large gradient</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Adam</span>
-<span class="c1"># Adaptive Moment Estimation (Adam) computes the exponentially decaying average of previous gradients m(t) along with an adaptive learning rate. Adam is a combined form of Momentum-based GD and RMSProp.</span>
-<span class="c1"># In Momentum-based GD, previous gradients(history) are used to compute the current gradient whereas, in RMSProp previous gradients(history) are used to adjust the learning rate based on the features. Therefore Adam deals with adaptive learning rate and adaptive momentum where RMSProp ensures v(t) does not grow rapidly to avoid the chances of decaying learning rate and m(t) from Momentum-based GD ensures it calculates the exponentially decaying average of previous gradients, not the current gradient.</span>
-
-<span class="k">def</span> <span class="nf">do_Adam</span><span class="p">():</span>
-    <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
-    <span class="n">v_w</span><span class="p">,</span> <span class="n">v_b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="n">m_w</span><span class="p">,</span> <span class="n">m_b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="n">num_updates</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-        <span class="n">dw</span><span class="p">,</span> <span class="n">db</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
-            <span class="n">dw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grad_w</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-            <span class="n">db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grad_b</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-        <span class="n">num_updates</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">m_w</span> <span class="o">=</span> <span class="n">beta1</span> <span class="o">*</span> <span class="n">m_w</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">beta1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dw</span>
-        <span class="n">m_b</span> <span class="o">=</span> <span class="n">beta1</span> <span class="o">*</span> <span class="n">m_b</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">beta1</span><span class="p">)</span> <span class="o">*</span> <span class="n">db</span>
-        <span class="n">v_w</span> <span class="o">=</span> <span class="n">beta2</span> <span class="o">*</span> <span class="n">v_w</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">beta2</span><span class="p">)</span> <span class="o">*</span> <span class="n">dw</span><span class="o">**</span><span class="mi">2</span>
-        <span class="n">v_b</span> <span class="o">=</span> <span class="n">beta2</span> <span class="o">*</span> <span class="n">v_b</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">beta2</span><span class="p">)</span> <span class="o">*</span> <span class="n">db</span><span class="o">**</span><span class="mi">2</span>
-        <span class="c1">#m_w_c, m_b_c, v_w_c and v_b_c for bias correction   </span>
-        <span class="n">m_w_c</span> <span class="o">=</span> <span class="n">m_w</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="err">—</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">num_updates</span><span class="p">))</span>
-        <span class="n">m_b_c</span> <span class="o">=</span> <span class="n">m_b</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="err">—</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">num_updates</span><span class="p">))</span>
-        <span class="n">v_w_c</span> <span class="o">=</span> <span class="n">v_w</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="err">—</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">beta2</span><span class="p">,</span> <span class="n">num_updates</span><span class="p">))</span>
-        <span class="n">v_b_c</span> <span class="o">=</span> <span class="n">v_b</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="err">—</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">beta2</span><span class="p">,</span> <span class="n">num_updates</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_w_c</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">m_w_c</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v_b_c</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">m_b_c</span>
-        
-<span class="c1"># So in Adam unlike RMSProp fewer oscillations and it moves more deterministically in the right direction which leads to faster convergence and better optimization.</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
