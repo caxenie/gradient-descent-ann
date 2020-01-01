@@ -13209,14 +13209,17 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Optimierungsmethoden">Optimierungsmethoden<a class="anchor-link" href="#Optimierungsmethoden">&#182;</a></h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Optimierungsmethoden">Optimierungsmethoden<a class="anchor-link" href="#Optimierungsmethoden">&#182;</a></h1><p>Optimierungsalgorithmen sind in der Regel iterative Verfahren. Ausgehend von einem gegebenen Punkt $ x^0 $ erzeugen sie eine Folge $ {x^k} $ von Iteraten (oder Versuchslösungen), die zu einer "Lösung" konvergieren.</p>
+<h1 id="Gliederung">Gliederung<a class="anchor-link" href="#Gliederung">&#182;</a></h1><ul>
+<li>Optimierungsgrundlagen</li>
+<li>Grundlegende Optimierung mit Gradientenabstieg</li>
+<li>Lernen als Optimierung in Neuronale Netwzwerk - Intuition</li>
+<li>Lernen als Optimierung in Neuronale Netzwerk - Mechanismen</li>
+<li>Rückwärtspropagierung (Backpropagation)</li>
+<li>Analyse von Gradientenabstiegsmethoden</li>
+<li>Gradientenabstieg in Neuronale Netzen in der Praxis</li>
+<li>Effiziente Implementierungen</li>
+<li>Fazit</li>
+</ul>
 
 </div>
 </div>
@@ -13224,7 +13227,22 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Optimierungsmethoden">Optimierungsmethoden<a class="anchor-link" href="#Optimierungsmethoden">&#182;</a></h1><table>
+<h1 id="Optimierungsgrundlagen">Optimierungsgrundlagen<a class="anchor-link" href="#Optimierungsgrundlagen">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Optimierungsgrundlagen">Optimierungsgrundlagen<a class="anchor-link" href="#Optimierungsgrundlagen">&#182;</a></h1><p>Optimierungsalgorithmen sind in der Regel iterative Verfahren. Ausgehend von einem gegebenen Punkt $ x^0 $ erzeugen sie eine Folge $ {x^k} $ von Iteraten (oder Versuchslösungen), die zu einer "Lösung" konvergieren.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Optimierungsgrundlagen">Optimierungsgrundlagen<a class="anchor-link" href="#Optimierungsgrundlagen">&#182;</a></h1><table>
 <thead><tr>
 <th style="text-align:center">Algorithmen nullter Ordnung</th>
 <th style="text-align:center">Algorithmen erster Ordnung</th>
@@ -13271,6 +13289,14 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Optimierungsgrundlagen">Optimierungsgrundlagen<a class="anchor-link" href="#Optimierungsgrundlagen">&#182;</a></h1><p><img src="./backprop-sketch/opt-types.png" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Grundlegende-Optimierung-mit-Gradientenabstieg">Grundlegende Optimierung mit Gradientenabstieg<a class="anchor-link" href="#Grundlegende-Optimierung-mit-Gradientenabstieg">&#182;</a></h1>
 </div>
 </div>
@@ -13298,7 +13324,7 @@ $$ \min \limits_{x \in R}f(x)$$<p>In Ermangelung weiterer Informationen suchen w
 <h1 id="Grundlegende-Optimierung-mit-Gradientenabstieg">Grundlegende Optimierung mit Gradientenabstieg<a class="anchor-link" href="#Grundlegende-Optimierung-mit-Gradientenabstieg">&#182;</a></h1><p>Sei $f$ eine differenzierbare Funktion und nehmen wir an, dass wir den Gradienten-Vektor $\nabla f$ berechnen können. Wir wollen Lösen Sie das uneingeschränkte Minimierungsproblem</p>
 $$ \min \limits_{x \in R}f(x)$$<p>In Ermangelung weiterer Informationen suchen wir einen stationären Punkt von $ f $, dh einen Punkt $ x^*$, an dem $\nabla f(x^*) = 0$. Hier wählen wir den Richtungsvektor $ d^k = - \nabla f (x^k) $ als Suchrichtung bei $ x^k $, der Richtung der steilsten Abfahrt.</p>
 <p>Die als Schrittweite bezeichnete Zahl $\alpha^k ≥ 0 $ wird als "passend" gewählt</p>
-$$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iteration definiert als $$x^{k+1} = x^k − \alpha^k \nabla f(x^k)$$</p>
+$$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iteration definiert als $$x^{k+1} = x^k − \alpha^k \nabla f(x^k)$$ oder  $$x^{k+1} = x^k + \alpha^k d^k$$</p>
 
 </div>
 </div>
@@ -13306,14 +13332,31 @@ $$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iter
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung">Lernen als Optimierung<a class="anchor-link" href="#Lernen-als-Optimierung">&#182;</a></h1>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">Lernen als Optimierung in Neuronale Netzwerk - Intuition<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung">Lernen als Optimierung<a class="anchor-link" href="#Lernen-als-Optimierung">&#182;</a></h1><p>Optimierungsalgorithmen helfen uns, eine <strong>Zielfunktion zu minimieren (oder zu maximieren)</strong>. Ein solches Ziel ist in <strong>neuronalen Netzen</strong> einfach eine <strong>mathematische Funktion (E)</strong>, die von den <strong>internen lernbaren Parametern (W)</strong> des Modells abhängt.</p>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">Lernen als Optimierung in Neuronale Netzwerk - Intuition<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">&#182;</a></h1><p>Optimierungsalgorithmen helfen uns, eine <strong>Zielfunktion zu minimieren (oder zu maximieren)</strong>.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">Lernen als Optimierung in Neuronale Netzwerk - Intuition<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">&#182;</a></h1><p>Optimierungsalgorithmen helfen uns, eine <strong>Zielfunktion zu minimieren (oder zu maximieren)</strong>.</p>
+<p><img src="./backprop-sketch/basic_net.png" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">Lernen als Optimierung in Neuronale Netzwerk - Intuition<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">&#182;</a></h1><p>Optimierungsalgorithmen helfen uns, eine <strong>Zielfunktion zu minimieren (oder zu maximieren)</strong>. Ein solches Ziel ist in <strong>neuronalen Netzen</strong> einfach eine <strong>mathematische Funktion (E)</strong>, die von den <strong>internen lernbaren Parametern (W)</strong> des Modells abhängt.</p>
 <p>Diese <strong>Parameter</strong> werden bei der Berechnung der <strong>erwarteten Werte (Y)</strong> aus dem Satz von <strong>Prädiktoren (X)</strong> verwendet, die im Modell verwendet werden.</p>
 <p><img src="./backprop-sketch/basic_net.png" alt=""></p>
 
@@ -13323,9 +13366,7 @@ $$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iter
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><p>Schritte zur <strong>Erreichung der erwarteten Ausgabe</strong> werden unternommen, um eine <strong>optimale Lösung zu finden</strong>, z.B Verlust $E$ minimieren.</p>
-<p>Diese <strong>Parameter</strong> werden im <strong>Trainingsprozess des Netzwerks</strong> durch Optimierung aktualisiert, die <strong>lokal verfügbare Informationen</strong> ausnutzt [4].</p>
-<p><img src="./backprop-sketch/basic_net.png" alt=""></p>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">Lernen als Optimierung in Neuronale Netzwerk - Intuition<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">&#182;</a></h1><p>Schritte zur <strong>Erreichung der erwarteten Ausgabe</strong> werden unternommen, um eine <strong>optimale Lösung zu finden</strong>, z.B Verlust $E$ minimieren.</p>
 
 </div>
 </div>
@@ -13333,9 +13374,18 @@ $$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iter
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">Lernen als Optimierung in Neuronale Netzwerk - Intuition<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Intuition">&#182;</a></h1><p>Schritte zur <strong>Erreichung der erwarteten Ausgabe</strong> werden unternommen, um eine <strong>optimale Lösung zu finden</strong>, z.B Verlust $E$ minimieren.</p>
+<p>Diese <strong>Parameter</strong> werden im <strong>Trainingsprozess des Netzwerks</strong> durch Optimierung aktualisiert, die <strong>lokal verfügbare Informationen</strong> ausnutzt [4].</p>
+<p><img src="./backprop-sketch/basic_net_locality.png" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">Lernen als Optimierung in Neuronale Netzwerk - Mechanismen<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/1.png">
-  <span style="vertical-align: middle; display: inline; font-size:15px">Neuronale Konnektivität durch Interneuron Gewichte und Vorspannungen  $w_{ij}$. </span>
 </div><p><em>Figur angepasst von [1]</em></p>
 
 </div>
@@ -13344,11 +13394,19 @@ $$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iter
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">Lernen als Optimierung in Neuronale Netzwerk - Mechanismen<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">&#182;</a></h1><div>
+  <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/2.png">
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">Lernen als Optimierung in Neuronale Netzwerk - Mechanismen<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/2.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
       Gesamteingabe $ x_j = \sum_{i\in in(j)} w_{ij} y_i +b_j $, 
-      Aktivierungsfunktion $ f (x_j) $,
       Ausgabe $ y_j = f (x_j) $
   </span>
 </div>
@@ -13358,9 +13416,8 @@ $$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iter
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><p>$ f (x) $ muss eine <strong>nichtlineare Funktion</strong> sein, sonst kann das neuronale Netzwerk nur lineare Modelle lernen.</p>
-<p>Jede <strong>Aktivierungsfunktion</strong> (oder Nichtlinearität) nimmt eine einzelne Zahl und führt eine bestimmte feste <strong>mathematische Operation</strong> darauf aus.</p>
-<p><img src="./backprop-sketch/squashings.png" alt=""></p>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Aktivierungsfunktion">Lernen als Optimierung in Neuronale Netzwerk - Aktivierungsfunktion<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Aktivierungsfunktion">&#182;</a></h1><p>Die <strong>Aktivierungsfunktion</strong> $ f (x) $ muss eine <strong>nichtlineare Funktion</strong> sein, sonst kann das neuronale Netzwerk nur lineare Modelle lernen.
+<img src="./backprop-sketch/squashings.png" alt=""></p>
 
 </div>
 </div>
@@ -13368,7 +13425,7 @@ $$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iter
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><table>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Aktivierungsfunktion">Lernen als Optimierung in Neuronale Netzwerk - Aktivierungsfunktion<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Aktivierungsfunktion">&#182;</a></h1><table>
 <thead><tr>
 <th style="text-align:center">Sigmoid</th>
 <th style="text-align:center">ReLu</th>
@@ -13405,7 +13462,7 @@ $$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iter
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">Lernen als Optimierung in Neuronale Netzwerk - Mechanismen<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/3.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">Die vorhergesagte Ausgabe ergeben $y_{output}$  muss nah am Zielwert sein $y_{target}$ für alle Eingaben $x_{input}$. </span>
 </div>
@@ -13415,7 +13472,7 @@ $$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iter
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">Lernen als Optimierung in Neuronale Netzwerk - Mechanismen<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/3.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
    Die Fehlerfunktion $ E $, z.B. $E(y_{output}, y_{target})=\frac{1}{2}(y_{output}−y_{target})^2$ ist das Optimierungskriterium.
@@ -13427,7 +13484,7 @@ $$ \alpha^k \in argmin f(x^k - \alpha \nabla f(x^k)) $$<p>Dann ist die neue Iter
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">Lernen als Optimierung in Neuronale Netzwerk - Mechanismen<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/3.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
 Wir versorgen das Netzwerk mit Beispielen $(x_{input},y_{target})$ und aktualisieren Sie das Eingabe-Neuron.
@@ -13439,7 +13496,7 @@ Wir versorgen das Netzwerk mit Beispielen $(x_{input},y_{target})$ und aktualisi
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1><div>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">Lernen als Optimierung in Neuronale Netzwerk - Mechanismen<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk---Mechanismen">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/7.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
 Wir folgen den gleichen Aktualisierungen für alle Neuronen in jeder verborgenen Schicht.
@@ -13458,7 +13515,7 @@ Wir folgen den gleichen Aktualisierungen für alle Neuronen in jeder verborgenen
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p><em>Rückwärtspropagierung (Backprop)</em> ist ein Spezialfall eines allgemeinen <strong>Gradientenverfahrens in der Optimierung</strong>, basierend auf dem <strong>mittleren quadratischen Fehler</strong>.</p>
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p><em>Rückwärtspropagierung (Backpropagation)</em> ist ein Spezialfall eines allgemeinen <strong>Gradientenverfahrens in der Optimierung</strong>, basierend auf dem <strong>mittleren quadratischen Fehler</strong>.</p>
 
 </div>
 </div>
@@ -13466,32 +13523,8 @@ Wir folgen den gleichen Aktualisierungen für alle Neuronen in jeder verborgenen
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p>Backprop entscheidet, <strong>wie oft jedes Gewicht des Netzwerks aktualisiert werden soll</strong>, nachdem die vorhergesagte Ausgabe $y_{output}$ mit der gewünschten Ausgabe $y_{target}$ für ein bestimmtes Beispiel verglichen wurde, $E(y_{output}, y_{target})=\frac{1}{2}(y_{output}−y_{target})^2$.</p>
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p>Backpropagation entscheidet, <strong>wie oft jedes Gewicht des Netzwerks aktualisiert werden soll</strong>, nachdem die vorhergesagte Ausgabe $y_{output}$ mit der gewünschten Ausgabe $y_{target}$ für ein bestimmtes Beispiel verglichen wurde, $E(y_{output}, y_{target})=\frac{1}{2}(y_{output}−y_{target})^2$.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
-  <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/8.png">
-  <span style="vertical-align: middle; display: inline; font-size:15px">
-    Dazu müssen wir berechnen, wie sich der Fehler $E$ in Bezug auf jedes Gewicht ändert $ \frac{dE}{dw_{ij}} $
-    </span>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
-  <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/8.png">
-  <span style="vertical-align: middle; display: inline; font-size:15px">
-Sobald wir die Fehlerableitungen haben, aktualisieren wir die Gewichte, um den Fehler $E$ zu minimieren.
-    </span>
-</div>
 </div>
 </div>
 </div></section></section><section><section>
@@ -13501,8 +13534,29 @@ Sobald wir die Fehlerableitungen haben, aktualisieren wir die Gewichte, um den F
 <h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><p>Backpropagation verwendet Gradientenabstiegoptimierung. Es werden <strong>Iterationen in Richtung einer Lösung</strong> durchgeführt, die <strong>proportional zum Negativ des Gradienten</strong> von $ E $ am aktuellen Punkt sind.</p>
 <p>Jedes Neuron folgt grundsätzlich das gleiche Gradientenabstieg:
  $$ w_{ij} = w_{ij} - \eta \frac{dE}{dw_{ij}}$$</p>
-<p>Wenn der Fehler nachlässt, wenn das Gewicht zunimmt ($ \frac {dE} {dw_ {ij}} &lt;0 $), erhöhen Sie das Gewicht, andernfalls, wenn der Fehler nachlässt, wenn das Gewicht zunimmt ($ \frac {dE} { dw_ {ij}}&gt; 0 $), dann verringern Sie das Gewicht.</p>
+<p>Wenn der Fehler nachlässt und das Gewicht zunimmt ($ \frac {dE} {dw_ {ij}} &lt;0 $), erhöhen Sie das Gewicht, andernfalls, wenn der Fehler nachlässt und das Gewicht zunimmt ($ \frac {dE} { dw_ {ij}}&gt; 0 $), dann verringern Sie das Gewicht.</p>
 
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
+  <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/8.png">
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
+  <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/8.png">
+  <span style="vertical-align: middle; display: inline; font-size:15px">
+    Berechnen wir wie sich der Fehler $E$ in Bezug auf jedes Gewicht ändert $ \frac{dE}{dw_{ij}} $
+    </span>
+</div>
 </div>
 </div>
 </div></section></section><section><section>
@@ -13512,7 +13566,7 @@ Sobald wir die Fehlerableitungen haben, aktualisieren wir die Gewichte, um den F
 <h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/10.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
-Um $ \frac {dE} {dw_ {ij}} $ zu berechnen, müssen wir wissen, wie sich der Fehler ändert mit $ \frac {dE} {dx} $ und $ \frac {dE} {dy} $.
+ Berechnen wir wie sich der Fehler ändert mit $ \frac {dE} {dx} $ und $ \frac {dE} {dy} $.
     </span>
 </div>
 </div>
@@ -13524,7 +13578,7 @@ Um $ \frac {dE} {dw_ {ij}} $ zu berechnen, müssen wir wissen, wie sich der Fehl
 <h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/11.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
-Für die mittlerer quadratischer Fehler $E = \frac{1}{2}(y_{output}\color{black} - y_{target})^2$ wir haben $\frac{\partial E}{\partial y_{output}} = y_{output}  - y_{target}$ 
+Für $E = \frac{1}{2}(y_{output}\color{black} - y_{target})^2$ wir haben $\frac{\partial E}{\partial y_{output}} = y_{output}  - y_{target}$ 
     </span>
 </div>
 </div>
@@ -13536,7 +13590,7 @@ Für die mittlerer quadratischer Fehler $E = \frac{1}{2}(y_{output}\color{black}
 <h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)">R&#252;ckw&#228;rtspropagierung (Backpropagation)<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/12.png">
   <span style="vertical-align: middle; display: inline; font-size:15px">
-Jetzt wo wir haben $ \frac{dE}{dy}$ wir können $\frac{dE}{dx}$ mit der Kettenregel erhalten $ \frac{\partial E}{\partial x} = \frac{dy}{dx}\frac{\partial E}{\partial y} = \frac{d}{dx}f(x)\frac{\partial E}{\partial y} $
+Wir können $\frac{dE}{dx}$ mit der Kettenregel erhalten $ \frac{\partial E}{\partial x} = \frac{dy}{dx}\frac{\partial E}{\partial y} = \frac{d}{dx}f(x)\frac{\partial E}{\partial y} $
     </span>
 </div>
 </div>
@@ -13584,8 +13638,7 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><p>Um den <strong>optimalen Wert der neuronalen Netzwerkparameter</strong> herauszufinden, müssen wir sie kontinuierlich mit der Backpropagation-Aktualisierungsregel iterieren.</p>
-<p>Wir verwenden <strong>verschiedene Optimierungsalgorithmen (basierend auf dem Gradientenabstieg)</strong>, um eine Aktualisierungsregel bereitzustellen, und jeder Optimierungsalgorithmus hat einen anderen <strong>Ansatz zum Berechnen</strong> , <strong>Aktualisieren</strong> und <strong>Ermitteln</strong> des optimalen Werts von Modellparametern.</p>
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><p>Wir verwenden <strong>verschiedene Optimierungsalgorithmen (basierend auf dem Gradientenabstieg)</strong>, um eine Aktualisierungsregel bereitzustellen, und jeder Optimierungsalgorithmus hat einen anderen <strong>Ansatz zum Berechnen</strong> , <strong>Aktualisieren</strong> und <strong>Ermitteln</strong> des optimalen Werts von Modellparametern [6].</p>
 
 </div>
 </div>
@@ -13593,9 +13646,7 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><p>Um den <strong>optimalen Wert der neuronalen Netzwerkparameter</strong> herauszufinden, müssen wir sie kontinuierlich mit der Backpropagation-Aktualisierungsregel iterieren.</p>
-<p>Wir verwenden <strong>verschiedene Optimierungsalgorithmen (basierend auf dem Gradientenabstieg)</strong>, um eine Aktualisierungsregel bereitzustellen, und jeder Optimierungsalgorithmus hat einen anderen <strong>Ansatz zum Berechnen</strong> , <strong>Aktualisieren</strong> und <strong>Ermitteln</strong> des optimalen Werts von Modellparametern [6].</p>
-<p>Abhängig von der Datenmenge machen wir einen <strong>Kompromiss zwischen die Genauigkeit der Parameteraktualisierung und die Zeit</strong>, die zur Durchführung einer Aktualisierung benötigt wird.</p>
+<h1 id="Analyse-von-Gradientenabstiegsmethoden">Analyse von Gradientenabstiegsmethoden<a class="anchor-link" href="#Analyse-von-Gradientenabstiegsmethoden">&#182;</a></h1><p>Abhängig von der Datenmenge machen wir einen <strong>Kompromiss zwischen die Genauigkeit der Parameteraktualisierung und die Zeit</strong>, die zur Durchführung einer Aktualisierung benötigt wird.</p>
 
 </div>
 </div>
@@ -13707,14 +13758,14 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 
 </div>
 </div>
-</div></section></section><section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-in-der-Praxis">R&#252;ckw&#228;rtspropagierung in der Praxis<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-in-der-Praxis">&#182;</a></h1>
+<h1 id="Gradientenabstieg-in-Neuronale-Netzen-in-der-Praxis">Gradientenabstieg in Neuronale Netzen in der Praxis<a class="anchor-link" href="#Gradientenabstieg-in-Neuronale-Netzen-in-der-Praxis">&#182;</a></h1>
 </div>
 </div>
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13776,7 +13827,7 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)-Hausaufgabe">R&#252;ckw&#228;rtspropagierung (Backpropagation) Hausaufgabe<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)-Hausaufgabe">&#182;</a></h1><div>
+<h1 id="R&#252;ckw&#228;rtspropagierung-(Backpropagation)---Hausaufgabe">R&#252;ckw&#228;rtspropagierung (Backpropagation) - Hausaufgabe<a class="anchor-link" href="#R&#252;ckw&#228;rtspropagierung-(Backpropagation)---Hausaufgabe">&#182;</a></h1><div>
   <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/bakprop-full.gif">
    <img style="vertical-align: middle; display: inline;" src="./backprop-sketch/code-homework.png">
 </div>
@@ -13786,15 +13837,14 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Gradientenabstieg-in-der-Praxis:-Parallelisierung">Gradientenabstieg in der Praxis: Parallelisierung<a class="anchor-link" href="#Gradientenabstieg-in-der-Praxis:-Parallelisierung">&#182;</a></h1>
+<h1 id="Effiziente-Implementierungen">Effiziente Implementierungen<a class="anchor-link" href="#Effiziente-Implementierungen">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Gradientenabstieg-in-der-Praxis:-Parallelisierung">Gradientenabstieg in der Praxis: Parallelisierung<a class="anchor-link" href="#Gradientenabstieg-in-der-Praxis:-Parallelisierung">&#182;</a></h1><p>Angesichts der <strong>Allgegenwart umfangreicher Datenlösungen</strong> und der <strong>Verfügbarkeit von Clustern, GPU [10], oder FPGA [11]</strong> ist es eine logische Entscheidung, <strong>neuronales Netzwerktraining zu verteilen</strong>, um es schneller zu machen.</p>
-<p>Die <strong>Optimierung des Gradientenabfalls</strong> selbst ist von Natur aus <strong>sequentiell und langsam</strong>. Verschiedene <strong>Algorithmen und Architekturen</strong> wurden vorgeschlagen, um den Gradientenabstieg zu <strong>parallelisieren und zu verteilen</strong>.</p>
+<h1 id="Effiziente-Implementierungen">Effiziente Implementierungen<a class="anchor-link" href="#Effiziente-Implementierungen">&#182;</a></h1><p>Angesichts der <strong>Allgegenwart umfangreicher Datenlösungen</strong> und der <strong>Verfügbarkeit von Clustern, GPU [10], oder FPGA [11]</strong> ist es eine logische Entscheidung, <strong>neuronales Netzwerktraining zu verteilen</strong>, um es schneller zu machen.</p>
 
 </div>
 </div>
@@ -13802,7 +13852,15 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Gradientenabstieg-in-der-Praxis:-Parallelisierung">Gradientenabstieg in der Praxis: Parallelisierung<a class="anchor-link" href="#Gradientenabstieg-in-der-Praxis:-Parallelisierung">&#182;</a></h1><p><em>Cluster Parallelisierung</em></p>
+<h1 id="Effiziente-Implementierungen">Effiziente Implementierungen<a class="anchor-link" href="#Effiziente-Implementierungen">&#182;</a></h1><p>Die <strong>Optimierung des Gradientenabfalls</strong> selbst ist von Natur aus <strong>sequentiell und langsam</strong>. Verschiedene <strong>Algorithmen und Architekturen</strong> wurden vorgeschlagen, um den Gradientenabstieg zu <strong>parallelisieren und zu verteilen</strong>.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Effiziente-Implementierungen">Effiziente Implementierungen<a class="anchor-link" href="#Effiziente-Implementierungen">&#182;</a></h1><p><em>Cluster Parallelisierung</em></p>
 <ul>
 <li>Hogwild! [7]<ul>
 <li>Ermöglicht die parallele Durchführung von SGD-Updates auf CPUs
@@ -13812,6 +13870,18 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 </ul>
 </li>
 </ul>
+<p>Sei t = 1, 2, . . . Wähle zufällig eine Teilmenge aus $S ⊆ {1, . . . , n}$ mit Größe $b$
+$$ w_{t+1} = w_t − \eta_t \frac{1}{b}\sum_{i \in S} \nabla f_i(w_t) $$</p>
+<p>Parallelisierung mit $k$ Prozessoren. Sei $ S = S_1 ∪ S_2 ∪ · · · ∪ S_k $ dann</p>
+$$  \sum_{i \in S} \nabla f_i(w_t) = \sum_{i \in S_1} \nabla f_i(w_t)  + \sum_{i \in S_2} \nabla f_i(w_t) + ... + \sum_{i \in S_k} \nabla f_i(w_t)$$<p>kann parallel berechnet werden.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Effiziente-Implementierungen">Effiziente Implementierungen<a class="anchor-link" href="#Effiziente-Implementierungen">&#182;</a></h1><p><em>Cluster Parallelisierung</em></p>
 <ul>
 <li>Downpour SGD [8]<ul>
 <li>Asynchrone Variante von SGD
@@ -13821,13 +13891,24 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 </ul>
 </li>
 </ul>
+<p><img src="./backprop-sketch/parallel-sgd.png" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Effiziente-Implementierungen">Effiziente Implementierungen<a class="anchor-link" href="#Effiziente-Implementierungen">&#182;</a></h1><p><em>Cluster Parallelisierung</em></p>
 <ul>
 <li>TensorFlow [9]<ul>
 <li>Open-Source-Framework für die Implementierung und Bereitstellung von groß angelegten maschinellen Lernmodellen
-    - stützt sich auf einen Berechnungsgraphen, der für jedes Gerät in einen Untergraphen aufgeteilt wird, während die Kommunikation über Sende- / Empfangsknotenpaare erfolgt.</li>
+    - stützt sich auf einen Berechnungsgraphen, der für jedes Gerät in einen Untergraphen aufgeteilt wird, während die Kommunikation über Sende- / Empfangsknotenpaare erfolgt</li>
+<li>der Ansatz "Daten parallel" für verteiltes Training umfasst die Aufteilung der Daten und das parallele Training auf mehreren Knoten [12].</li>
 </ul>
 </li>
 </ul>
+<p><img src="./backprop-sketch/parallel-horovod.png" alt=""></p>
 
 </div>
 </div>
@@ -13846,6 +13927,7 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <p>[9] Martin Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen, Craig Citro, Greg Corrado, Andy Davis, Jeffrey Dean, Matthieu Devin, Sanjay Ghemawat, Ian Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard, Yangqing Jia, Lukasz Kaiser, Manjunath Kudlur, Josh Levenberg, Dan Man, Rajat Monga, Sherry Moore, Derek Murray, Jon Shlens, Benoit Steiner, Ilya Sutskever, Paul Tucker, Vincent Vanhoucke, Vijay Vasudevan, Oriol Vinyals, Pete Warden, Martin Wicke, Yuan Yu, and Xiaoqiang Zheng. TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems. 2015.</p>
 <p>[10] Song, F., Tomov, S., &amp; Dongarra, J. (2012, June). Enabling and scaling matrix computations on heterogeneous multicore and multi-GPU systems. In Proceedings of the 26th ACM international conference on Supercomputing (pp. 365-376). ACM.</p>
 <p>[11] Liu, Q., Liu, J., Sang, R., Li, J., Zhang, T., &amp; Zhang, Q. (2018). Fast neural network training on FPGA using quasi-newton optimization method. IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 26(8), 1575-1579.</p>
+<p>[12] Sergeev, A., &amp; Del Balso, M. (2018). Horovod: fast and easy distributed deep learning in TensorFlow. arXiv preprint arXiv:1802.05799.</p>
 
 </div>
 </div>
@@ -14260,7 +14342,7 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 <span class="c1"># das vorherige Momentum dann findet es, was der Gradient sein sollte.</span>
 <span class="c1"># Diese Vorausschau hilft der NAG, ihre Arbeit schneller zu Ende zu bringen (und die Minima zu finden) als die auf Impulsen basierende GD.</span>
 <span class="c1"># Daher sind die Oszillationen im Vergleich zur impulsbasierten GD geringer und es besteht auch eine geringere Wahrscheinlichkeit, </span>
-<span class="n">dass</span> <span class="n">die</span> <span class="n">Minima</span> <span class="n">verfehlt</span> <span class="n">werden</span><span class="o">.</span>
+<span class="c1"># dass die Minima verfehlt werden.</span>
 
 <span class="k">def</span> <span class="nf">do_nag_gradient_descent</span><span class="p">():</span>
     <span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">eta</span><span class="p">,</span><span class="n">max_epochs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1000</span>
@@ -15057,13 +15139,13 @@ Please use `tqdm.notebook.tqdm` instead of `tqdm.tqdm_notebook`
 
  
  
-<div id="6eb60f19-6d3e-4b65-b303-8acad592192d"></div>
+<div id="11e71364-867f-4705-aa43-06fb0ad17318"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6eb60f19-6d3e-4b65-b303-8acad592192d');
+var element = $('#11e71364-867f-4705-aa43-06fb0ad17318');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "38ebcfc6a1b640179d735d6163f51345", "version_major": 2, "version_minor": 0}
+{"version_major": 2, "model_id": "38ebcfc6a1b640179d735d6163f51345", "version_minor": 0}
 </script>
 </div>
 
