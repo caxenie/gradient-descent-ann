@@ -13209,7 +13209,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Gliederung">Gliederung<a class="anchor-link" href="#Gliederung">&#182;</a></h1><ul>
+<h1 id="Inhalt">Inhalt<a class="anchor-link" href="#Inhalt">&#182;</a></h1><ul>
 <li>Optimierungsgrundlagen</li>
 <li>Grundlegende Optimierung mit Gradientenabstieg</li>
 <li>Lernen als Optimierung in Neuronale Netwzwerk - Intuition</li>
@@ -13758,14 +13758,14 @@ Wir wiederholen den Vorgang für jedes Beispiel im Trainingsdatensatz.
 
 </div>
 </div>
-</div><div class="fragment">
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Gradientenabstieg-in-Neuronale-Netzen-in-der-Praxis">Gradientenabstieg in Neuronale Netzen in der Praxis<a class="anchor-link" href="#Gradientenabstieg-in-Neuronale-Netzen-in-der-Praxis">&#182;</a></h1>
 </div>
 </div>
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13902,8 +13902,7 @@ $$  \sum_{i \in S} \nabla f_i(w_t) = \sum_{i \in S_1} \nabla f_i(w_t)  + \sum_{i
 <h1 id="Effiziente-Implementierungen">Effiziente Implementierungen<a class="anchor-link" href="#Effiziente-Implementierungen">&#182;</a></h1><p><em>Cluster Parallelisierung</em></p>
 <ul>
 <li>TensorFlow [9]<ul>
-<li>Open-Source-Framework für die Implementierung und Bereitstellung von groß angelegten maschinellen Lernmodellen
-    - stützt sich auf einen Berechnungsgraphen, der für jedes Gerät in einen Untergraphen aufgeteilt wird, während die Kommunikation über Sende- / Empfangsknotenpaare erfolgt</li>
+<li>Open-Source-Framework für die Implementierung und Bereitstellung von groß angelegten maschinellen Lernmodellen</li>
 <li>der Ansatz "Daten parallel" für verteiltes Training umfasst die Aufteilung der Daten und das parallele Training auf mehreren Knoten [12].</li>
 </ul>
 </li>
@@ -13922,12 +13921,12 @@ $$  \sum_{i \in S} \nabla f_i(w_t) = \sum_{i \in S_1} \nabla f_i(w_t)  + \sum_{i
 <p>[4] Barnard, E. (1992). Optimization for training neural nets. IEEE transactions on Neural Networks, 3(2), 232-240.</p>
 <p>[5] Ruder, S. (2016). An overview of gradient descent optimization algorithms. arXiv preprint arXiv:1609.04747.</p>
 <p>[6] Haykin, S. (2010). Neural Networks and Learning Machines, 3/E. Pearson Education.</p>
-<p>[7] Feng Niu, Benjamin Recht, R Christopher, and Stephen J Wright. Hogwild!: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent. pages 1–22, 2011.</p>
-<p>[8] Jeffrey Dean, Greg S. Corrado, Rajat Monga, Kai Chen, Matthieu Devin, Quoc V. Le, Mark Z. Mao, Marc Aurelio Ranzato, Andrew Senior, Paul Tucker, Ke Yang, and Andrew Y. Ng. Large Scale Distributed Deep Networks. NIPS 2012: Neural Information Processing Systems, pages 1–11, 2012.</p>
-<p>[9] Martin Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen, Craig Citro, Greg Corrado, Andy Davis, Jeffrey Dean, Matthieu Devin, Sanjay Ghemawat, Ian Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard, Yangqing Jia, Lukasz Kaiser, Manjunath Kudlur, Josh Levenberg, Dan Man, Rajat Monga, Sherry Moore, Derek Murray, Jon Shlens, Benoit Steiner, Ilya Sutskever, Paul Tucker, Vincent Vanhoucke, Vijay Vasudevan, Oriol Vinyals, Pete Warden, Martin Wicke, Yuan Yu, and Xiaoqiang Zheng. TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems. 2015.</p>
-<p>[10] Song, F., Tomov, S., &amp; Dongarra, J. (2012, June). Enabling and scaling matrix computations on heterogeneous multicore and multi-GPU systems. In Proceedings of the 26th ACM international conference on Supercomputing (pp. 365-376). ACM.</p>
-<p>[11] Liu, Q., Liu, J., Sang, R., Li, J., Zhang, T., &amp; Zhang, Q. (2018). Fast neural network training on FPGA using quasi-newton optimization method. IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 26(8), 1575-1579.</p>
-<p>[12] Sergeev, A., &amp; Del Balso, M. (2018). Horovod: fast and easy distributed deep learning in TensorFlow. arXiv preprint arXiv:1802.05799.</p>
+<p>[7] Feng Niu et al., Hogwild!: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent. pages 1–22, 2011.</p>
+<p>[8] Jeffrey Dean et al., Large Scale Distributed Deep Networks. NIPS 2012: Neural Information Processing Systems, pages 1–11, 2012.</p>
+<p>[9] Martin Abadi et al., TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems. 2015.</p>
+<p>[10] Song, F. et al., Enabling and scaling matrix computations on heterogeneous multicore and multi-GPU systems. In Proceedings of the 26th ACM international conference on Supercomputing (pp. 365-376), 2012.</p>
+<p>[11] Liu, Q et al., Fast neural network training on FPGA using quasi-newton optimization method. IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 26(8), 1575-1579, 2018.</p>
+<p>[12] Sergeev, A et al., Horovod: fast and easy distributed deep learning in TensorFlow. arXiv preprint arXiv:1802.05799, 2018.</p>
 
 </div>
 </div>
@@ -13939,6 +13938,19 @@ $$  \sum_{i \in S} \nabla f_i(w_t) = \sum_{i \in S_1} \nabla f_i(w_t)  + \sum_{i
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -15139,13 +15151,13 @@ Please use `tqdm.notebook.tqdm` instead of `tqdm.tqdm_notebook`
 
  
  
-<div id="11e71364-867f-4705-aa43-06fb0ad17318"></div>
+<div id="d42daf8b-497b-4257-8235-511cac95d8c1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#11e71364-867f-4705-aa43-06fb0ad17318');
+var element = $('#d42daf8b-497b-4257-8235-511cac95d8c1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "model_id": "38ebcfc6a1b640179d735d6163f51345", "version_minor": 0}
+{"version_major": 2, "version_minor": 0, "model_id": "38ebcfc6a1b640179d735d6163f51345"}
 </script>
 </div>
 
