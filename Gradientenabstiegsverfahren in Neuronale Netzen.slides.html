@@ -13202,7 +13202,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Einsatz-von-Gradientenabstiegsverfahren-in">Einsatz von Gradientenabstiegsverfahren in<a class="anchor-link" href="#Einsatz-von-Gradientenabstiegsverfahren-in">&#182;</a></h1><h1 id="Neuronale-Netzwerk">Neuronale Netzwerk<a class="anchor-link" href="#Neuronale-Netzwerk">&#182;</a></h1>
+<h1 id="Einsatz-von-Gradientenabstiegsverfahren-in">Einsatz von Gradientenabstiegsverfahren in<a class="anchor-link" href="#Einsatz-von-Gradientenabstiegsverfahren-in">&#182;</a></h1><h1 id="Neuronalen-Netzen">Neuronalen Netzen<a class="anchor-link" href="#Neuronalen-Netzen">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
@@ -13210,11 +13210,11 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Inhalt">Inhalt<a class="anchor-link" href="#Inhalt">&#182;</a></h1><ul>
-<li>Optimierungsgrundlagen</li>
+<li>Grundlagen der Optimierung</li>
 <li>Gradientenabstieg</li>
-<li>Lernen als Optimierung in Neuronale Netzwerk </li>
-<li>Gradientenabstieg in Neuronale Netzwerk</li>
-<li>Einschränkungen der Gradientenabstieg</li>
+<li>Lernen als Optimierung in Neuronalen Netzen</li>
+<li>Gradientenabstieg in Neuronalen Netzen</li>
+<li>Nachteile des Gradientenabstiegs</li>
 <li>Fazit</li>
 </ul>
 
@@ -13224,43 +13224,36 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Optimierungsgrundlagen">Optimierungsgrundlagen<a class="anchor-link" href="#Optimierungsgrundlagen">&#182;</a></h1>
+<h1 id="Grundlagen-der-Optimierung">Grundlagen der Optimierung<a class="anchor-link" href="#Grundlagen-der-Optimierung">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Optimierungsalgorithmen</strong> sind in der Regel <strong>iterative Verfahren</strong>. Ausgehend von einem gegebenen Punkt $ {x_0 (+)} $ erzeugen sie eine Folge $ {x_k} $ <strong>Iterationen</strong> die zu einer Lösung (${\bullet}$) <strong>konvergieren</strong> [2].</p>
-<p><img src="./optimization.gif" alt=""></p>
-
+<h1 id="Grundlagen-der-Optimierung">Grundlagen der Optimierung<a class="anchor-link" href="#Grundlagen-der-Optimierung">&#182;</a></h1><p><strong>Optimierungsalgorithmen</strong> sind in der Regel <strong>iterative Verfahren</strong>. Ausgehend von einem gegebenen Punkt $ {x_0  \color{red}{+}} $ erzeugen sie eine Folge ${x_k}$ von <strong>Iterierten</strong>, die zu einer Lösung ($\color{red}{\bullet}$) <strong>konvergieren</strong> [2].</p>
+<center>![](./optimization.gif)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/opt-types1-notext.png">
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/opt-types2-notext-single.png">
-</div>
+<h1 id="Grundlagen-der-Optimierung">Grundlagen der Optimierung<a class="anchor-link" href="#Grundlagen-der-Optimierung">&#182;</a></h1><center>![](./backprop-sketch/opt-types1-notext.png)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/opt-types3-notext-single.png">
+<h1 id="Grundlagen-der-Optimierung">Grundlagen der Optimierung<a class="anchor-link" href="#Grundlagen-der-Optimierung">&#182;</a></h1><center>![](./backprop-sketch/opt-types2-notext-single.png)</center>
 </div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Grundlagen-der-Optimierung">Grundlagen der Optimierung<a class="anchor-link" href="#Grundlagen-der-Optimierung">&#182;</a></h1><center>![](./backprop-sketch/opt-types3-notext-single.png)</center>
 </div>
 </div>
 </div></section></section><section><section>
@@ -13274,24 +13267,23 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/gradient-descent-diagram.png">
-</div>
+<h1 id="Gradientenabstieg">Gradientenabstieg<a class="anchor-link" href="#Gradientenabstieg">&#182;</a></h1><center>![](./backprop-sketch/gradient-descent-fig.png)</center>
 </div>
 </div>
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzwerk">Lernen als Optimierung in Neuronale Netzwerk<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzwerk">&#182;</a></h1>
+<h1 id="Lernen-als-Optimierung-in-Neuronale-Netzen">Lernen als Optimierung in Neuronale Netzen<a class="anchor-link" href="#Lernen-als-Optimierung-in-Neuronale-Netzen">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Optimierungsalgorithmen helfen uns, eine <strong>Zielfunktion zu minimieren (oder zu maximieren)</strong>. Ein solches Zielfunktion ist in <strong>neuronalen Netzen</strong> einfach eine <strong>mathematische Funktion (E)</strong>, die von den <strong>internen lernbaren Parametern (W)</strong> des Modells abhängt [3].</p>
-<p>Diese <strong>Parameter</strong> werden bei der Berechnung der <strong>erwarteten Werte (Y)</strong> aus dem Satz von <strong>Prädiktoren (X)</strong> verwendet, die im Modell verwendet werden. <strong>E</strong> beschreibt die Differenz zwischen dem erwarteten Wert und dem <strong>tatsächlichen Netzwerkausgangswert (O)</strong>.</p>
+<p>Optimierungsalgorithmen helfen uns, eine <strong>Zielfunktion zu minimieren (oder zu maximieren)</strong>. Ein solche Zielfunktion ist in <strong>neuronalen Netzen</strong> eine <strong>mathematische Funktion (E)</strong>, die von den <strong>internen lernbaren Parametern (W)</strong> des Netzwerks abhängt [3].</p>
+<p>Diese <strong>Parametern</strong> werden bei der Berechnung der <strong>erwarteten Werte (Y)</strong> aus dem Satz von <strong>Prädiktoren (X)</strong> benutzt.</p>
+<p><strong>E</strong> beschreibt die Differenz zwischen dem erwarteten Wert und dem <strong>tatsächlichen Netzwerkausgangswert (O)</strong>.</p>
 
 </div>
 </div>
@@ -13299,199 +13291,164 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/basic-net.gif">
-</div>
+<center>![](./backprop-sketch/basic-net.gif)</center>
 </div>
 </div>
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Gradientenabstieg-in-Neuronale-Netzwerk">Gradientenabstieg in Neuronale Netzwerk<a class="anchor-link" href="#Gradientenabstieg-in-Neuronale-Netzwerk">&#182;</a></h1>
+<h1 id="Gradientenabstieg-in-Neuronale-Netzen">Gradientenabstieg in Neuronale Netzen<a class="anchor-link" href="#Gradientenabstieg-in-Neuronale-Netzen">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bin&#228;re-Klassifikation-mit-neuronalen-Netzen">Bin&#228;re Klassifikation mit neuronalen Netzen<a class="anchor-link" href="#Bin&#228;re-Klassifikation-mit-neuronalen-Netzen">&#182;</a></h2><div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/hausaufgabe.png">
-</div>
+<h3 id="Bin&#228;re-Klassifikation-mit-neuronalen-Netzen">Bin&#228;re Klassifikation mit neuronalen Netzen<a class="anchor-link" href="#Bin&#228;re-Klassifikation-mit-neuronalen-Netzen">&#182;</a></h3><center>![](./backprop-sketch/hausaufgabe.png)</center>
 </div>
 </div>
 </div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/1.gif">
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/2.gif">
-</div>
+<center>![](./backprop-sketch/1.gif>)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/3.gif">
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/4.gif">
-</div>
+<center>![](./backprop-sketch/2.gif>)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/5.gif">
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/6.gif">
-</div>
+<center>![](./backprop-sketch/3.gif>)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/7.gif">
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/8.gif">
-</div>
+<center>![](./backprop-sketch/4.gif>)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/9.gif">
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/10.gif">
-</div>
+<center>![](./backprop-sketch/5.gif>)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/11.gif">
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/12.gif">
-</div>
+<center>![](./backprop-sketch/6.gif>)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/13.gif">
-</div>
+<center>![](./backprop-sketch/7.gif>)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./backprop-sketch/14.gif">
+<center>![](./backprop-sketch/8.gif>)</center>
 </div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>![](./backprop-sketch/9.gif>)</center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>![](./backprop-sketch/10.gif>)</center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>![](./backprop-sketch/11.gif>)</center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>![](./backprop-sketch/12.gif>)</center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>![](./backprop-sketch/13.gif>)</center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>![](./backprop-sketch/14.gif)</center>
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Ausf&#252;hrungsausgabe">Ausf&#252;hrungsausgabe<a class="anchor-link" href="#Ausf&#252;hrungsausgabe">&#182;</a></h1>
+<h1 id="Ausgabe-des-Programms">Ausgabe des Programms<a class="anchor-link" href="#Ausgabe-des-Programms">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Erstauff&#252;hrung">Erstauff&#252;hrung<a class="anchor-link" href="#Erstauff&#252;hrung">&#182;</a></h3><p><img src="./output-klass-96.png" alt="">
-<img src="./output-roc-96.png" alt=""></p>
-
+<h3 id="Erste-Ausf&#252;hrung">Erste Ausf&#252;hrung<a class="anchor-link" href="#Erste-Ausf&#252;hrung">&#182;</a></h3><center>![](./output-klass-96.png)</center>
+<center>![](./output-roc-96.png)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Zweite-Auff&#252;hrung">Zweite Auff&#252;hrung<a class="anchor-link" href="#Zweite-Auff&#252;hrung">&#182;</a></h3><p><img src="./output-klass-99.png" alt="">
-<img src="./output-roc-99.png" alt=""></p>
-
+<h3 id="Zweite-Ausf&#252;hrung">Zweite Ausf&#252;hrung<a class="anchor-link" href="#Zweite-Ausf&#252;hrung">&#182;</a></h3><center>![](./output-klass-99.png)</center>
+<center>![](./output-roc-99.png)</center>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Dritte-Auff&#252;hrung">Dritte Auff&#252;hrung<a class="anchor-link" href="#Dritte-Auff&#252;hrung">&#182;</a></h3><p><img src="./output-klass-100.png" alt="">
-<img src="./output-roc-100.png" alt=""></p>
-
+<h3 id="Dritte-Ausf&#252;hrung">Dritte Ausf&#252;hrung<a class="anchor-link" href="#Dritte-Ausf&#252;hrung">&#182;</a></h3><center>![](./output-klass-100.png)</center>
+<center>![](./output-roc-100.png)</center>
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Einschr&#228;nkungen-der-Gradientenabstieg">Einschr&#228;nkungen der Gradientenabstieg<a class="anchor-link" href="#Einschr&#228;nkungen-der-Gradientenabstieg">&#182;</a></h1>
+<h1 id="Nachteile-des-Gradientenabstiegs">Nachteile des Gradientenabstiegs<a class="anchor-link" href="#Nachteile-des-Gradientenabstiegs">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Abhängig von der Datenmenge machen wir einen <strong>Kompromiss zwischen die Genauigkeit der Parameteraktualisierung und die Konvergenzzeit</strong> [2, 4].</p>
+<h1 id="Nachteile-des-Gradientenabstiegs">Nachteile des Gradientenabstiegs<a class="anchor-link" href="#Nachteile-des-Gradientenabstiegs">&#182;</a></h1><p>Abhängig von der Datenmenge machen wir einen <strong>Kompromiss zwischen die Genauigkeit der Parameteraktualisierung und der Konvergenzgeschwindigkeit</strong> [2, 4].</p>
 
 </div>
 </div>
@@ -13499,16 +13456,14 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./gradient-problems.gif">
-</div>
+<h1 id="Nachteile-des-Gradientenabstiegs">Nachteile des Gradientenabstiegs<a class="anchor-link" href="#Nachteile-des-Gradientenabstiegs">&#182;</a></h1><center>![](./gradient-problems.gif)</center>
 </div>
 </div>
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Einschr&#228;nkungen-der-Gradientenabstieg">Einschr&#228;nkungen der Gradientenabstieg<a class="anchor-link" href="#Einschr&#228;nkungen-der-Gradientenabstieg">&#182;</a></h1><p>Es wurden <strong>verschiedene Methoden entwickelt</strong>, um diesen Einschränkungen auf unterschiedliche Weise <strong>entgegenzuwirken</strong> [3].</p>
+<h1 id="Nachteile-des-Gradientenabstiegs">Nachteile des Gradientenabstiegs<a class="anchor-link" href="#Nachteile-des-Gradientenabstiegs">&#182;</a></h1><p>Es wurden <strong>verschiedene Methoden entwickelt</strong>, um die Nechteile zum <strong>beheben</strong> [3].</p>
 
 </div>
 </div>
@@ -13532,7 +13487,7 @@ a.anchor-link {
 <tr>
 <td style="text-align:center">$\color{green}{+} $ einfache Aktualisierungsregel (z. B. Summe, Produkt)</td>
 <td style="text-align:center">$\color{green}{+}$ Beschleunigt in die jeweilige Steigungsrichtung und dämpft Schwingungen</td>
-<td style="text-align:center">$\color{green}{+}$ speichert einen exponentiell abfallenden Durchschnitt vergangener Gradienten (glättender Schwung) mit adaptive Lernrate fur jede parameter</td>
+<td style="text-align:center">$\color{green}{+}$ speichert einen exponentiell abfallenden Durchschnitt vergangener Gradienten (glättendes Moment) mit adaptiver Lernrate für jeden parameter</td>
 </tr>
 <tr>
 <td style="text-align:center">$\color{red} {-}$ Konvergiert zum globalen Minimum für konvexe Fehleroberflächen und zu einem lokalen Minimum für nichtkonvexe Oberflächen</td>
@@ -13548,18 +13503,14 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./demo-anim.gif">
-</div>
+<h1 id="Nachteile-des-Gradientenabstiegs">Nachteile des Gradientenabstiegs<a class="anchor-link" href="#Nachteile-des-Gradientenabstiegs">&#182;</a></h1><center>![](./demo-anim.gif)</center>
 </div>
 </div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div>
-  <img style="vertical-align: middle;" src="./loss-anim.gif">
-</div>
+<h1 id="Nachteile-des-Gradientenabstiegs">Nachteile des Gradientenabstiegs<a class="anchor-link" href="#Nachteile-des-Gradientenabstiegs">&#182;</a></h1><center>![](./loss-anim.gif)</center>
 </div>
 </div>
 </div></section></section><section><section>
@@ -13568,9 +13519,9 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Fazit">Fazit<a class="anchor-link" href="#Fazit">&#182;</a></h1><ul>
 <li><strong>Gradientenabstieg</strong> ist die <strong>typische Optimierungsmethode</strong> in neuronalen Netzen.</li>
-<li><strong>Lernen</strong> in Neuronale Netwzwerk ist ein <strong>iterativer Prozess</strong>.</li>
-<li>Bei der <strong>Rückwärtspropagierung (Backpropagation)</strong> wird ein Gradientenabstieg verwendet, um zu einer <strong>Lösung zu konvergieren</strong> (d. h. die <strong>Gewichte zu finden</strong>), die die <strong>Fehlerfunktion minimiert</strong>.</li>
-<li><strong>Gradientenabstieg</strong> ist jedoch <strong>problematisch</strong> (d. h. Konvergenz, Präzision), und dennoch wurden in der Praxis viele <strong>verbesserte Verfahren</strong> entwickelt.</li>
+<li><strong>Lernen</strong> in Neuronalen Netzen ist ein <strong>iterativer Prozess</strong>.</li>
+<li>Bei der <strong>Backpropagation</strong> wird ein Gradientenabstieg verwendet, um zu einer <strong>Lösung zu konvergieren</strong> (d. h. die <strong>Gewichte zu finden</strong>), die die <strong>Fehlerfunktion minimiert</strong>.</li>
+<li><strong>Gradientenabstieg</strong> ist jedoch <strong>problematisch</strong> (Konvergenz, Präzision), aber es wurden viele <strong>verbesserte Verfahren</strong> entwickelt.</li>
 <li>Das <strong>Verständnis des Gradientenabstieg</strong> bei der Diagnose der Backpropagation <strong>ist für erfolgreiche Anwendungen erforderlich</strong>.</li>
 </ul>
 
@@ -13591,7 +13542,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Vorlessung-Notebook-herunterladen">Vorlessung Notebook herunterladen<a class="anchor-link" href="#Vorlessung-Notebook-herunterladen">&#182;</a></h1><p><img src="./qrcode.png" style="width = 200, height=200"/></p>
+<h1 id="Vorlesung-Notebook-herunterladen">Vorlesung Notebook herunterladen<a class="anchor-link" href="#Vorlesung-Notebook-herunterladen">&#182;</a></h1><p><img src="./qrcode.png" style="width = 200, height=200"/></p>
 
 </div>
 </div>
